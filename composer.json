@@ -1,0 +1,19 @@
+{
+    "name": "studio1902/statamic-peak-tools",
+    "autoload": {
+        "psr-4": {
+            "Studio1902\\PeakTools\\": "src"
+        }
+    },
+    "extra": {
+        "statamic": {
+            "name": "Statamic Peak Tools",
+            "description": "Statamic Peak Tools addon"
+        },
+        "laravel": {
+            "providers": [
+                "Studio1902\\PeakTools\\ServiceProvider"
+            ]
+        }
+    }
+}
