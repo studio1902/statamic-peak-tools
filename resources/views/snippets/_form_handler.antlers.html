@@ -5,6 +5,8 @@
 
 <!-- statamic-peak-tools::snippets/_form_handler.antlers.html -->
 {{ once }}
+    {{# The Statamic helpers for conditional fields. #}}
+    <script src="/vendor/statamic/frontend/js/helpers.js"></script>
     {{# The form script handling validation and submission via AJAX with `fetch()`. #}}
     <script>
         document.addEventListener('alpine:initializing', () => {
