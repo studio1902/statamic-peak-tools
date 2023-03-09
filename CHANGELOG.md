@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.1 (2023-03-09)
+
+### What's improved
+- Include the Statamic Conditional field form helpers. a53558a3 by @robdekort
+
 ## v2.0 (2023-03-09)
 
 ### What's new
