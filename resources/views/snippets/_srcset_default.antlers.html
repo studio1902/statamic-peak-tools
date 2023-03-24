@@ -1,0 +1,16 @@
+{{#
+    @name Default `scrset` definition
+    @desc The default definition for the `srcset` attribute which gets loaded in `statamic-peak-tools::components/_picture.antlers.html`.
+#}}
+
+{{ srcset = [
+    [ 'width' => 320, 'ratio' => '{ ratio ?? original_ratio }' ],
+    [ 'width' => 480, 'ratio' => '{ ratio ?? original_ratio }' ],
+    [ 'width' => 640, 'ratio' => '{ ratio ?? original_ratio }' ],
+    [ 'width' => 768, 'ratio' => '{ ratio ?? original_ratio }' ],
+    [ 'width' => 1024, 'ratio' => '{ ((skip_ratio_steps != 1 && skip_ratio_steps != 2 && skip_ratio_steps != 3) ?= ratio_large) ?? ratio ?? original_ratio }' ],
+    [ 'width' => 1280, 'ratio' => '{ ((skip_ratio_steps != 2 && skip_ratio_steps != 3) ?= ratio_large) ?? ratio ?? original_ratio }' ],
+    [ 'width' => 1440, 'ratio' => '{ ((skip_ratio_steps != 3) ?= ratio_large) ?? ratio ?? original_ratio }' ],
+    [ 'width' => 1536, 'ratio' => '{ ratio_large ?? ratio ?? original_ratio }' ],
+    [ 'width' => 1680, 'ratio' => '{ ratio_large ?? ratio ?? original_ratio }' ]
+] }}
