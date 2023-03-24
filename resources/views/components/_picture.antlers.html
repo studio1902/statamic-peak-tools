@@ -5,7 +5,7 @@
     @param* sizes The sizes attribute. Something like `(min-width: 768px) 55vw, 90vw` for example.
     @param aspect_ratio Pass in an aspect ratio to crop the image in a certain way. `16/9` for example or specify a second ratio for larger screens: `1/1 large:1/2`.
     @param skip_ratio_steps Integer. Skip 1, 2 or 3 ratio steps to force small screens rendering big images to use mobile cropping instead of `large` cropping.
-    @param srcset The path to a partial with an alternative srcsets variable array. Something like `snippets/picture/srcsets/full_width` for example.
+    @param srcset_from The path to a partial with an alternative srcset variable array. Something like `snippets/srcset_full_width` for example.
     @param class Add optional CSS classes.
     @param cover Boolean. Whether the image should cover the parent. Uses the focus position.
     @param bg String. Sets a background color for transparent images.
@@ -37,10 +37,10 @@
         {{ original_ratio = height / width }}
 
         {{# Initialize srcset variable in current scope. #}}
-        {{ srcsets = null }}
+        {{ srcset = null }}
 
         {{# Set srcset sizes. #}}
-        {{ partial src="{ srcset ?: 'statamic-peak-tools::snippets/picture/srcsets/default' }" }}
+        {{ partial src="{ srcset_from ?: 'statamic-peak-tools::snippets/srcset_default' }" }}
 
         <picture>
             {{ if extension == 'svg' || extension == 'gif' }}
@@ -62,7 +62,7 @@
             {{ else }}
                 <source
                     srcset="
-                        {{ srcsets scope="size" }}
+                        {{ srcset scope="size" }}
                             {{
                                 glide:image
                                 width="{ size:width }"
@@ -79,14 +79,14 @@
                                 format="webp"
                                 quality="{ quality ?? '85' }"
                             }} {{ size:width }}w{{ !last ?= ',' }}
-                        {{ /srcsets }}
+                        {{ /srcset }}
                     "
                     sizes="{{ sizes ?? '(min-width: 1280px) 640px, (min-width: 768px) 50vw, 90vw' }}"
                     type="image/webp"
                 >
                 <source
                     srcset="
-                        {{ srcsets scope="size" }}
+                        {{ srcset scope="size" }}
                             {{
                                 glide:image
                                 width="{ size:width }"
@@ -103,7 +103,7 @@
                                 quality="{ quality ?? '85' }"
                             }}
                             {{ size:width }}w{{ !last ?= ',' }}
-                        {{ /srcsets }}
+                        {{ /srcset }}
                     "
                     sizes="{{ sizes ?? '(min-width: 1280px) 640px, (min-width: 768px) 50vw, 90vw' }}"
                     type="{{ image.mime_type }}"
