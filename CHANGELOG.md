@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.3 (2023-03-24)
+
+### What's improved
+- Add the option to use a different srcset when using the picture partial. #4 by @marcorieser
+
 ## v2.2 (2023-03-18)
 
 ### What's improved
