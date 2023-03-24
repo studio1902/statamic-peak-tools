@@ -36,22 +36,11 @@
         {{ /aspect_ratio }}
         {{ original_ratio = height / width }}
 
-        {{# Set srcset sizes. #}}
-        {{ srcsets = [
-            [ 'width' => 320, 'ratio' => '{ ratio ?? original_ratio }' ],
-            [ 'width' => 480, 'ratio' => '{ ratio ?? original_ratio }' ],
-            [ 'width' => 640, 'ratio' => '{ ratio ?? original_ratio }' ],
-            [ 'width' => 768, 'ratio' => '{ ratio ?? original_ratio }' ],
-            [ 'width' => 1024, 'ratio' => '{ ((skip_ratio_steps != 1 && skip_ratio_steps != 2 && skip_ratio_steps != 3) ?= ratio_large) ?? ratio ?? original_ratio }' ],
-            [ 'width' => 1280, 'ratio' => '{ ((skip_ratio_steps != 2 && skip_ratio_steps != 3) ?= ratio_large) ?? ratio ?? original_ratio }' ],
-            [ 'width' => 1440, 'ratio' => '{ ((skip_ratio_steps != 3) ?= ratio_large) ?? ratio ?? original_ratio }' ],
-            [ 'width' => 1536, 'ratio' => '{ ratio_large ?? ratio ?? original_ratio }' ],
-            [ 'width' => 1680, 'ratio' => '{ ratio_large ?? ratio ?? original_ratio }' ]
-        ] }}
+        {{# Initialize srcset variable in current scope. #}}
+        {{ srcsets = null }}
 
-        {{ if srcset }}
-            {{ partial:if_exists :src="srcset" }}
-        {{ /if }}
+        {{# Set srcset sizes. #}}
+        {{ partial src="{ srcset ?: 'snippets/picture/srcsets/default' }" }}
 
         <picture>
             {{ if extension == 'svg' || extension == 'gif' }}
