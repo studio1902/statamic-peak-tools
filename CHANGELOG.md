@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.4 (2023-03-31)
+
+### What's fixed
+- Fix context for `this.success` in form handler. #6 by @marcorieser
+
 ## v2.3 (2023-03-24)
 
 ### What's improved
