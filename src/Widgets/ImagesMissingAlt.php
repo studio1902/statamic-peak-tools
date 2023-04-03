@@ -32,7 +32,7 @@ class ImagesMissingAlt extends Widget
 
         $assets = collect($assets);
 
-        return view('statamic-peak-seo::widgets.images-missing-alt', [
+        return view('widgets.images-missing-alt', [
             'assets' => $assets->slice(0, $this->config('limit', 5)),
             'amount' => count($assets),
             'container' => AssetContainer::findByHandle($this->config('container', 'assets'))->title(),
