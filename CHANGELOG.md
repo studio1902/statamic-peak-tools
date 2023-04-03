@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.5 (2023-04-03)
+
+### What's improved
+- Allow token refreshing from any host while in local environment. #7 by @marcorieser
+
 ## v2.4 (2023-03-31)
 
 ### What's fixed
