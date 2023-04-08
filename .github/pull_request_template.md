@@ -1,4 +1,4 @@
-Make sure you [discussed your idea](https://github.com/studio1902/statamic-peak-commands/discussions) before doing a PR.
+Make sure you [discussed your idea](https://github.com/studio1902/statamic-peak-tools/discussions) before doing a PR.
 
 Fixes # .
 
