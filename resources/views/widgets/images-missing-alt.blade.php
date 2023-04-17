@@ -31,7 +31,7 @@
             <td class="actions-column"></td>
         </tr>
     @empty
-        <div class="content p-2">
+        <div class="content p-4">
             <p>{{ __('strings.widget_assets_done') }}</p>
         </div>
     @endforelse
