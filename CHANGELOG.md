@@ -4,6 +4,7 @@
 
 ### What's new
 - Statamic v4 support: include the MissingAltWidget in this addon and restyle it to fit the updated CP. #8 by @robdekort
+- Add support for morphing live preview edits instead of refreshing the browser. #8 by @robdekort
 
 ## v2.5 (2023-04-03)
 
