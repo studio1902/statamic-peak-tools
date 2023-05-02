@@ -1,0 +1,19 @@
+{{#
+    @name Live Preview
+    @desc Make sure Live Preview morphs instead of refreshing the browser when making edits to an entry. Disable `refresh` under `Preview Targets` in your collection configuration to enable this feature.
+#}}
+
+<!-- statamic-peak-tools::snippets/_live_preview.antlers.html -->
+{{ if live_preview }}
+    <script>
+        window.addEventListener('message', async (event) => {
+            if (event.data.name === 'statamic.preview.updated') {
+                const text = await fetch(location.href).then((res) => res.text());
+                const updated = new DOMParser().parseFromString(text, 'text/html');
+                Alpine.morph(document.head, updated.head);
+                Alpine.morph(document.body, updated.body);
+            }
+        });
+    </script>
+{{ /if }}
+<!-- End: statamic-peak-tools::snippets/_live_preview.antlers.html -->
