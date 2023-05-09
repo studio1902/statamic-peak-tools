@@ -1,6 +1,6 @@
 # Changelog
 
-## v3.0 (unreleased)
+## v3.0 (2023-05-09)
 
 ### What's new
 - Statamic v4 support: include the MissingAltWidget in this addon and restyle it to fit the updated CP. #8 by @robdekort
