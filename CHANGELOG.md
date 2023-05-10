@@ -3,7 +3,7 @@
 ## v3.1 (2023-05-10)
 
 ### What's improved
-- Make live preview working with static caching. Can and will be simplified later when [this PR](https://github.com/statamic/cms/pull/8100) gets merged. #e09f4cf0 by @jacksleight
+- Make live preview work with static caching. Can and will be simplified later when [this PR](https://github.com/statamic/cms/pull/8100) gets merged. #e09f4cf0 by @jacksleight
 
 ## v3.0 (2023-05-09)
 
