@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.1 (2023-05-10)
+
+### What's improved
+- Make live preview working with static caching. Can and will be simplified later when [this PR](https://github.com/statamic/cms/pull/8100) gets merged. #e09f4cf0 by @jacksleight
+
 ## v3.0 (2023-05-09)
 
 **Breaking changes**: If you upgrade an existing site make sure to apply the [changes made to Peak Core in v12](https://github.com/studio1902/statamic-peak/releases/tag/v12.0).
