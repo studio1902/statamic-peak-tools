@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.2 (2023-05-11)
+
+### What's improved
+- Simplify live preview morph partial. #49e3c22a by @jacksleight
+
 ## v3.1 (2023-05-10)
 
 ### What's improved
