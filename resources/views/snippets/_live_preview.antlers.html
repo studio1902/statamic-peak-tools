@@ -8,9 +8,7 @@
     <script>
         window.addEventListener('message', async (event) => {
             if (event.data.name === 'statamic.preview.updated') {
-                const random = (Math.random() + 1).toString(36).substring(2);
-                const url = location.href.replace(/live-preview=[^&]+/, `live-preview=${random}`);
-                const text = await fetch(url).then((res) => res.text());
+                const text = await fetch(event.data.url).then((res) => res.text());
                 const updated = new DOMParser().parseFromString(text, 'text/html');
                 Alpine.morph(document.head, updated.head);
                 Alpine.morph(document.body, updated.body);
