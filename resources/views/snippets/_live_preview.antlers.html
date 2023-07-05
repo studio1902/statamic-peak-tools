@@ -3,8 +3,8 @@
     @desc Make sure Live Preview morphs instead of refreshing the browser when making edits to an entry. Disable `refresh` under `Preview Targets` in your collection configuration to enable this feature.
 #}}
 
-<!-- statamic-peak-tools::snippets/_live_preview.antlers.html -->
 {{ if live_preview }}
+    <!-- statamic-peak-tools::snippets/_live_preview.antlers.html -->
     <script>
         window.addEventListener('message', async (event) => {
             if (event.data.name === 'statamic.preview.updated') {
@@ -15,5 +15,5 @@
             }
         });
     </script>
+    <!-- End: statamic-peak-tools::snippets/_live_preview.antlers.html -->
 {{ /if }}
-<!-- End: statamic-peak-tools::snippets/_live_preview.antlers.html -->
