@@ -2,14 +2,19 @@
 
 namespace Studio1902\PeakTools\Widgets;
 
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Cache;
-use Statamic\Facades\Asset;
 use Statamic\Facades\AssetContainer;
 use Statamic\Widgets\Widget;
+use Studio1902\PeakTools\Widgets\Services;
 
 class ImagesMissingAlt extends Widget
 {
+    protected Service $service;
+
+    public function __construct(Service $service)
+    {
+        $this->service = $service;
+    }
+
     /**
      * The HTML that should be shown in the widget.
      *
@@ -17,25 +22,21 @@ class ImagesMissingAlt extends Widget
      */
     public function html()
     {
-        $expiration = Carbon::now()->addMinutes($this->config('expiry', 0));
+        $container = $this->config('container', 'assets');
 
-        $assets = Cache::remember('widgets::ImagesMissingAlt', $expiration, function() {
-            return Asset::query()
-                ->where('container', $this->config('container', 'assets'))
-                ->whereNull('alt')
-                ->whereIn('extension', $this->config('filetypes', ['jpg', 'jpeg', 'png', 'gif', 'webp', 'avif', 'bmp', 'tiff', 'svg']))
-                ->orderBy('last_modified', 'desc')
-                ->limit(100)
-                ->get()
-                ->toAugmentedArray();
-        });
+        $containers = collect(is_array($container) ? $container : [$container]);
 
-        $assets = collect($assets);
+        $assets = $containers->reduce(
+            fn ($assets, $container) => $assets->merge($this->service->getImagesWithMissingAlt($container)),
+            collect(),
+        );
 
-        return view('statamic-peak-tools::widgets.images-missing-alt', [
+        $assets = $assets->sortByDesc('last_modified')->values();
+
+        return view('statamic-images-missing-alt::widgets.images-missing-alt', [
             'assets' => $assets->slice(0, $this->config('limit', 5)),
-            'amount' => count($assets),
-            'container' => AssetContainer::findByHandle($this->config('container', 'assets'))->title(),
+            'amount' => $assets->count(),
+            'containers' => $containers->map(fn (string $container) => AssetContainer::findByHandle($container)->title()),
         ]);
     }
 }

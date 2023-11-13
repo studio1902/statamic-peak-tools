@@ -4,11 +4,16 @@ namespace Studio1902\PeakTools;
 
 use Statamic\Providers\AddonServiceProvider;
 use Studio1902\PeakTools\Widgets\ImagesMissingAlt;
+use Studio1902\PeakTools\Widgets\Listeners\UpdateImagesMissingAltCacheListener;
 
 class ServiceProvider extends AddonServiceProvider
 {
     protected $routes = [
         'actions' => __DIR__ . '/../routes/actions.php',
+    ];
+
+    protected $subscribe = [
+        UpdateImagesMissingAltCacheListener::class,
     ];
 
     protected $widgets = [
