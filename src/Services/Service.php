@@ -9,7 +9,7 @@ class Service
 {
     public function getCacheKey(string $container): string
     {
-        return "widgets::StatamicImagesMissingAlt.{$container}";
+        return "widgets::ImagesMissingAlt.{$container}";
     }
 
     public function clearCache(string $container): void
