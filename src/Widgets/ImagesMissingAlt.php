@@ -4,7 +4,7 @@ namespace Studio1902\PeakTools\Widgets;
 
 use Statamic\Facades\AssetContainer;
 use Statamic\Widgets\Widget;
-use Studio1902\PeakTools\Widgets\Services;
+use Studio1902\PeakTools\Services\Service;
 
 class ImagesMissingAlt extends Widget
 {

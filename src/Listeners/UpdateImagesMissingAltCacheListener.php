@@ -1,11 +1,11 @@
 <?php
 
-namespace Studio1902\PeakTools\Widgets\Listeners;
+namespace Studio1902\PeakTools\Listeners;
 
 use Statamic\Events\AssetDeleted;
 use Statamic\Events\AssetSaved;
 use Statamic\Events\AssetUploaded;
-use Studio1902\PeakTools\Widgets\Jobs\UpdateMissingAltCacheJob;
+use Studio1902\PeakTools\Jobs\UpdateMissingAltCacheJob;
 
 class UpdateImagesMissingAltCacheListener
 {

@@ -4,7 +4,7 @@ namespace Studio1902\PeakTools;
 
 use Statamic\Providers\AddonServiceProvider;
 use Studio1902\PeakTools\Widgets\ImagesMissingAlt;
-use Studio1902\PeakTools\Widgets\Listeners\UpdateImagesMissingAltCacheListener;
+use Studio1902\PeakTools\Listeners\UpdateImagesMissingAltCacheListener;
 
 class ServiceProvider extends AddonServiceProvider
 {

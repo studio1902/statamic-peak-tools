@@ -1,6 +1,6 @@
 <?php
 
-namespace Studio1902\PeakTools\Widgets\Services;
+namespace Studio1902\PeakTools\Services;
 
 use Illuminate\Support\Facades\Cache;
 use Statamic\Facades\Asset;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Studio1902\PeakTools\Widgets\Jobs;
+namespace Studio1902\PeakTools\Jobs;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUniqueUntilProcessing;
@@ -30,7 +30,7 @@ class UpdateMissingAltCacheJob implements ShouldQueue, ShouldBeUniqueUntilProces
         $this->event = $event;
     }
 
-    public function handle(\Studio1902\PeakTools\Widgets\Services\Service $service)
+    public function handle(\Studio1902\PeakTools\Services\Service $service)
     {
         $service->clearCache($this->getAssetContainerHandle());
         $service->preloadCache($this->getAssetContainerHandle());
