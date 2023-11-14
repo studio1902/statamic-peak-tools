@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.3.0 (2023-11-14)
+
+### What's improved
+- Implement a better caching solution for the no alt text widget. #12 by @robdekort
+
 ## v3.2 (2023-05-11)
 
 ### What's improved
