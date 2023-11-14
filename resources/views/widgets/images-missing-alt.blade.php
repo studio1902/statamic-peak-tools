@@ -5,7 +5,7 @@
                 <div class="h-6 w-6 mr-2 text-gray-800">
                     @cp_svg('icons/light/assets')
                 </div>
-                <span>{{ __('strings.widget_assets_title', ['container' => $container]) }}</span>
+                <span>{{ __('strings.widget_assets_title', ['container' => $containers[0]]) }}</span>
             </div>
         </h2>
     </div>
