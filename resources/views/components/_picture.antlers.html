@@ -21,7 +21,7 @@
 #}}
 
 <!-- statamic-peak-tools::components/_picture.antlers.html -->
-{{ if image }}
+{{ if image && image.width > 0 }}
     {{ asset :url="image" }}
         {{# Configure aspect ratio's. #}}
         {{ ratio = null }}

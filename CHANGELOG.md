@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.4.0 (2023-11-16)
+
+### What's improved
+- Add extra image width check to picture partial to prevent divisons by zero. bb620244 by @robdekort
+
 ## v3.3.0 (2023-11-14)
 
 ### What's improved
