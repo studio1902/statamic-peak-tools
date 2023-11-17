@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.4.1 (2023-11-17)
+
+### What's improved
+- Roll-back bb620244. d40dccd4 by @robdekort
+
 ## v3.4.0 (2023-11-16)
 
 ### What's improved
