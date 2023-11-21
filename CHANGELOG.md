@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.4.3 (2023-11-21)
+
+### What's improved
+- Fix tpyo that caused picture errors. 89cd1114 by @robdekort
+
 ## v3.4.2 (2023-11-21)
 
 ### What's improved
