@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.4.2 (2023-11-21)
+
+### What's improved
+- Add a more solid check to the picture partial to prevent divisons by zero. 08675838 by @robdekort
+
 ## v3.4.1 (2023-11-17)
 
 ### What's improved
