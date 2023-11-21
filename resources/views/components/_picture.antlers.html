@@ -34,7 +34,7 @@
                 {{ ratio = (value | explode('/') | last) / (value | explode('/') | first) }}
             {{ /if }}
         {{ /aspect_ratio }}
-        {{ original_ratio = height / width }}
+        {{ width && height ?= original_ratio = height / width }}
 
         {{# Initialize srcset variable in current scope to be overwritable from partial below. #}}
         {{ srcset = null }}
