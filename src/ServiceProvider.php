@@ -8,8 +8,12 @@ use Studio1902\PeakTools\Listeners\UpdateImagesMissingAltCacheListener;
 
 class ServiceProvider extends AddonServiceProvider
 {
-    protected $routes = [
-        'actions' => __DIR__ . '/../routes/actions.php',
+    protected $subscribe = [
+        UpdateImagesMissingAltCacheListener::class,
+    ];
+
+    protected $subscribe = [
+        UpdateImagesMissingAltCacheListener::class,
     ];
 
     protected $subscribe = [
