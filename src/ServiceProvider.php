@@ -12,6 +12,10 @@ class ServiceProvider extends AddonServiceProvider
         UpdateImagesMissingAltCacheListener::class,
     ];
 
+    protected $subscribe = [
+        UpdateImagesMissingAltCacheListener::class,
+    ];
+
     protected $widgets = [
         ImagesMissingAlt::class
     ];
