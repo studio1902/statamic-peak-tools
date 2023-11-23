@@ -19,12 +19,16 @@
                         $refs.form.getAttribute('action'),
                         JSON.parse($refs.form.getAttribute('x-data'))
                     ),
+                    succesHook() {
+                        {{ success_hook }}
+                    },
                     submit() {
                         this.form.submit()
                             .then(response => {
                                 this.form.reset()
                                 this.$refs.form.reset()
                                 this.success = true
+                                this.succesHook()
                                 setTimeout(() => {
                                     this.success = false
                                 }, 4500)
