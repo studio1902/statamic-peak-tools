@@ -13,12 +13,15 @@
             Alpine.data('formHandler', () => ({
                 success: false,
                 form: '',
+                dynamic_form: null,
                 init() {
                     this.form = this.$form(
                         'post',
                         this.$refs.form.getAttribute('action'),
                         JSON.parse(this.$refs.form.getAttribute('x-data')).dynamic_form
                     )
+
+                    this.dynamic_form = this.form
                 },
                 succesHook() {
                     {{ success_hook }}
