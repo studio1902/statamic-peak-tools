@@ -8,38 +8,38 @@
     {{# The Statamic helpers for conditional fields. #}}
     <script src="/vendor/statamic/frontend/js/helpers.js"></script>
 
-    {{# The form script handling validation and submission via AJAX with `fetch()`. #}}
     <script>
         document.addEventListener('alpine:initializing', () => {
-            Alpine.data('formHandler', () => {
-                return {
-                    success: false,
-                    form: $form(
+            Alpine.data('formHandler', () => ({
+                success: false,
+                form: '',
+                init() {
+                    this.form = this.$form(
                         'post',
-                        $refs.form.getAttribute('action'),
-                        JSON.parse($refs.form.getAttribute('x-data'))
-                    ),
-                    succesHook() {
-                        {{ success_hook }}
-                    },
-                    submit() {
-                        this.form.submit()
-                            .then(response => {
-                                this.form.reset()
-                                this.$refs.form.reset()
-                                this.success = true
-                                this.succesHook()
-                                setTimeout(() => {
-                                    this.success = false
-                                }, 4500)
-                            })
-                            .then($refs.form.scrollIntoView())
-                            .catch(error => {
-                                $focus.focus(document.querySelector('#summary').querySelector('a'))
-                            })
-                    }
+                        this.$refs.form.getAttribute('action'),
+                        JSON.parse(this.$refs.form.getAttribute('x-data')).dynamic_form
+                    )
+                },
+                succesHook() {
+                    {{ success_hook }}
+                },
+                submit() {
+                    this.form.submit()
+                        .then(response => {
+                            this.form.reset()
+                            this.$refs.form.reset()
+                            this.success = true
+                            this.succesHook()
+                            setTimeout(() => {
+                                this.success = false
+                            }, 4500)
+                        })
+                        .then(this.$refs.form.scrollIntoView())
+                        .catch(error => {
+                            this.$focus.focus(document.querySelector('#summary').querySelector('a'))
+                        })
                 }
-            })
+            }))
         })
     </script>
 {{ /once }}
