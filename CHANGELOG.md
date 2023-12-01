@@ -1,5 +1,10 @@
 # Changelog
 
+## v4.0.0 (2023-12-01)
+
+### What's new
+- Breaking change: Laravel Precognition support. Removes the old style form handler. Don't upgrade to this version if you don't manually change your templates according to [this PR](https://github.com/studio1902/statamic-peak/pull/359). #13 by @robdekort
+
 ## v3.4.3 (2023-11-21)
 
 ### What's improved
