@@ -7,54 +7,39 @@
 {{ once }}
     {{# The Statamic helpers for conditional fields. #}}
     <script src="/vendor/statamic/frontend/js/helpers.js"></script>
-    {{# The form script handling validation and submission via AJAX with `fetch()`. #}}
+
     <script>
         document.addEventListener('alpine:initializing', () => {
-            Alpine.data('formHandler', () => {
-                return {
-                    error: false,
-                    errors: [],
-                    sending: false,
-                    success: false,
-                    sendForm: async function() {
-                        this.sending = true
-
-                        // Post the form.
-                        fetch(this.$refs.form.action, {
-                            headers: {
-                                'X-Requested-With' : 'XMLHttpRequest',
-                                'X-CSRF-Token' : await getToken()
-                            },
-                            method: 'POST',
-                            body: new FormData(this.$refs.form)})
-                        .then(res => res.json())
-                        .then(json => {
-                            if (json['success']) {
-                                this.errors = []
-                                this.success = true
-                                this.error = false
-                                this.sending = false
-                                this.$refs.form.reset()
-
-                                setTimeout(() => {
-                                    this.success = false
-                                }, 4500)
-                            }
-                            if (json['error']) {
-                                this.sending = false
-                                this.error = true
+            Alpine.data('formHandler', () => ({
+                success: false,
+                form: '',
+                init() {
+                    this.form = this.$form(
+                        'post',
+                        this.$refs.form.getAttribute('action'),
+                        JSON.parse(this.$refs.form.getAttribute('x-data')).dynamic_form
+                    )
+                },
+                succesHook() {
+                    {{ success_hook }}
+                },
+                submit() {
+                    this.form.submit()
+                        .then(response => {
+                            this.form.reset()
+                            this.$refs.form.reset()
+                            this.success = true
+                            this.succesHook()
+                            setTimeout(() => {
                                 this.success = false
-                                this.errors = json['error']
-                            }
+                            }, 4500)
                         })
-                        .catch(err => {
-                            err.text().then( errorMessage => {
-                                this.sending = false
-                            })
+                        .then(this.$refs.form.scrollIntoView())
+                        .catch(error => {
+                            this.$focus.focus(document.querySelector('#summary').querySelector('a'))
                         })
-                    }
                 }
-            })
+            }))
         })
     </script>
 {{ /once }}
