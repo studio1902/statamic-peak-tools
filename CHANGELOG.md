@@ -4,7 +4,9 @@
 
 ### What's fixed
 - Fix statamic conditionals not working #14 by @AndreasSchantl
-- An update script to automatically update the JS driver in the form partial. a5e7f9bc by @robdekort
+
+### What's new
+- An update script to automatically update the JS driver in the form partial. a5e7f9bc and f23504fb by @robdekort
 
 ## v4.0.0 (2023-12-01)
 
