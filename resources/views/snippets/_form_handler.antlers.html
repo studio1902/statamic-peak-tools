@@ -12,7 +12,7 @@
         document.addEventListener('alpine:initializing', () => {
             Alpine.data('formHandler', () => ({
                 success: false,
-                form: '',
+                form: null,
                 dynamic_form: null,
                 init() {
                     this.form = this.$form(
