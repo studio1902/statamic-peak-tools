@@ -16,6 +16,10 @@ class ServiceProvider extends AddonServiceProvider
         ImagesMissingAlt::class
     ];
 
+    protected $updateScripts = [
+        \Studio1902\PeakTools\Updates\UpdateFormJSDriver::class,
+    ];
+
     public function bootAddon()
     {
         $this->registerPublishableViews();
