@@ -1,5 +1,11 @@
 # Changelog
 
+## v4.0.1 (2023-12-04)
+
+### What's fixed
+- Fix statamic conditionals not working #14 by @AndreasSchantl
+- An update script to automatically update the JS driver in the form partial. a5e7f9bc by @robdekort
+
 ## v4.0.0 (2023-12-01)
 
 ### What's new
