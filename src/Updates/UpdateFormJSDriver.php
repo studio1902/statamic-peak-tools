@@ -11,7 +11,6 @@ class UpdateFormJSDriver extends UpdateScript
     public function shouldUpdate($newVersion, $oldVersion)
     {
         return $this->isUpdatingTo('4.0.1');
-        return true;
     }
 
     public function update()
