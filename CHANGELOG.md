@@ -1,5 +1,10 @@
 # Changelog
 
+## v4.0.2 (2023-12-07)
+
+### What's improved
+- Add an update script to auto [fix form fields](https://github.com/studio1902/statamic-peak/releases/tag/v16.1.2). 6a054e7b by @robdekort
+
 ## v4.0.1 (2023-12-04)
 
 ### What's fixed
