@@ -3,7 +3,7 @@
 ## v4.0.3 (2023-12-08)
 
 ### What's improved
-- Improve form error handling. d85a58a1 by @robdekort
+- Only show form error summary after submission. d85a58a1 by @robdekort
 
 ## v4.0.2 (2023-12-07)
 
