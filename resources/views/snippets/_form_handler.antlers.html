@@ -12,6 +12,7 @@
         document.addEventListener('alpine:initializing', () => {
             Alpine.data('formHandler', () => ({
                 success: false,
+                submitted: false,
                 form: null,
                 init() {
                     this.form = this.$form(
@@ -19,18 +20,18 @@
                         this.$refs.form.getAttribute('action'),
                         JSON.parse(this.$refs.form.getAttribute('x-data')).form
                     )
-
-                    this.dynamic_form = this.form
                 },
                 succesHook() {
                     {{ success_hook }}
                 },
                 submit() {
+                    this.submitted = true
                     this.form.submit()
                         .then(response => {
                             this.form.reset()
                             this.$refs.form.reset()
                             this.success = true
+                            this.submitted = false
                             this.succesHook()
                             setTimeout(() => {
                                 this.success = false

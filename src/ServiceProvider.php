@@ -19,6 +19,7 @@ class ServiceProvider extends AddonServiceProvider
     protected $updateScripts = [
         \Studio1902\PeakTools\Updates\UpdateFormJSDriver::class,
         \Studio1902\PeakTools\Updates\UpdateFormFields::class,
+        \Studio1902\PeakTools\Updates\UpdateFormErrorHandling::class,
     ];
 
     public function bootAddon()
