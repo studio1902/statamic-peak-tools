@@ -1,5 +1,10 @@
 # Changelog
 
+## v4.0.4 (2023-12-09)
+
+### What's fixed
+- Expired token errors when using forms with static caching. 6f4255ce by @robdekort
+
 ## v4.0.3 (2023-12-08)
 
 ### What's improved
