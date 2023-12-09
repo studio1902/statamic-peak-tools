@@ -9,6 +9,7 @@
     <script src="/vendor/statamic/frontend/js/helpers.js"></script>
 
     <script>
+        window.livewire_token = ''
         document.addEventListener('alpine:initializing', () => {
             Alpine.data('formHandler', () => ({
                 success: false,
@@ -18,7 +19,16 @@
                     this.form = this.$form(
                         'post',
                         this.$refs.form.getAttribute('action'),
-                        JSON.parse(this.$refs.form.getAttribute('x-data')).form
+                        JSON.parse(this.$refs.form.getAttribute('x-data')).form,
+                        {
+                            headers: {
+                                'X-CSRF-Token': {
+                                    toString() {
+                                        return window.livewire_token;
+                                    }
+                                },
+                            }
+                        },
                     )
                 },
                 succesHook() {
