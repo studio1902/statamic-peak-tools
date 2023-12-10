@@ -1,5 +1,10 @@
 # Changelog
 
+## v4.0.5 (2023-12-10)
+
+### What's improved
+- Handle CSRF tokens more elegant. fe52f063 by @ryanmitchell
+
 ## v4.0.4 (2023-12-09)
 
 ### What's fixed
