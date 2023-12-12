@@ -1,5 +1,15 @@
 # Changelog
 
+## v4.1.0 (2023-12-12)
+
+### What's new
+- Add button attributes partial to this addon. An update script will automatically fix references . 6a2e513d by @robdekort
+
+## v4.0.5 (2023-12-10)
+
+### What's improved
+- Handle CSRF tokens more elegant. fe52f063 by @ryanmitchell
+
 ## v4.0.5 (2023-12-10)
 
 ### What's improved
