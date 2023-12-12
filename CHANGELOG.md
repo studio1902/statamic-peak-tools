@@ -4,6 +4,7 @@
 
 ### What's new
 - Add button attributes partial to this addon. An update script will automatically fix references . 6a2e513d by @robdekort
+- Button tags should not use default link behaviour. 6a2e513d by @mikemartin.
 
 ## v4.0.5 (2023-12-10)
 
