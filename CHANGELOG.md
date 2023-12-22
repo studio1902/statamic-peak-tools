@@ -1,5 +1,10 @@
 # Changelog
 
+## v4.2.0 (2023-12-22)
+
+### What's new
+- When you use tab and focus a toolbar item the toolbar wil now unhide. 568224b8 by @robdekort
+
 ## v4.1.0 (2023-12-12)
 
 ### What's new
