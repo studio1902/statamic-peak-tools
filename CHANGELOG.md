@@ -1,5 +1,10 @@
 # Changelog
 
+## v4.3.0 (2024-01-22)
+
+### What's new
+- Add flip and orient parameters to picture partial. 7a87b666 by @robdekort
+
 ## v4.2.0 (2023-12-22)
 
 ### What's new
