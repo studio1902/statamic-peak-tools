@@ -13,7 +13,9 @@
     @param brightness String. Adjusts the image brightness. Use values between -100 and +100, where 0 represents no change.
     @param contrast String. Adjusts the image contrast. Use values between -100 and +100, where 0 represents no change.
     @param filter String. Applies a filter effect to the image. Accepts `greyscale` or `sepia`.
+    @param flip String. Flips the image. Accepts `v`, `h` and `both`.
     @param gamma Float. Adjusts the image gamma. Use values between 0.1 and 9.99.
+    @param orient String. Rotates the image. Accepts `auto`, `0`, `90`, `180` or `270`.
     @param sharpen Integer. Sharpen the image. Use values between 0 and 100.
     @param pixelate Integer. Applies a pixelation effect to the image. Use values between 0 and 1000.
     @param lazy Boolean. Whether the image should be natively lazy loaded.
@@ -72,7 +74,9 @@
                                 :brightness="brightness"
                                 :contrast="contrast"
                                 :filter="filter"
+                                :flip="flip"
                                 :gamma="gamma"
+                                :orient="orient"
                                 :pixelate="pixelate"
                                 :sharpen="sharpen"
                                 fit="crop_focal"
@@ -96,7 +100,9 @@
                                 :brightness="brightness"
                                 :contrast="contrast"
                                 :filter="filter"
+                                :flip="flip"
                                 :gamma="gamma"
+                                :orient="orient"
                                 :pixelate="pixelate"
                                 :sharpen="sharpen"
                                 fit="crop_focal"
@@ -120,7 +126,9 @@
                         :brightness="brightness"
                         :contrast="contrast"
                         :filter="filter"
+                        :flip="flip"
                         :gamma="gamma"
+                        :orient="orient"
                         :pixelate="pixelate"
                         :sharpen="sharpen"
                         quality="{ quality ?? '85' }"
