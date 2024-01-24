@@ -1,5 +1,10 @@
 # Changelog
 
+## v4.4.0 (2024-01-24)
+
+### What's new
+- Don't list missing alt images that are exempt. This update will add a toggle to your images blueprint. 9a6dd4f6 by @robdekort
+
 ## v4.3.0 (2024-01-22)
 
 ### What's new
