@@ -22,6 +22,7 @@ class ServiceProvider extends AddonServiceProvider
         \Studio1902\PeakTools\Updates\UpdateFormErrorHandling::class,
         \Studio1902\PeakTools\Updates\UpdateButtonAttributeTags::class,
         \Studio1902\PeakTools\Updates\UpdateImagesBlueprintWithExemptToggle::class,
+        \Studio1902\PeakTools\Updates\UpdateHoneypotField::class,
     ];
 
     public function bootAddon()
