@@ -1,5 +1,10 @@
 # Changelog
 
+## v4.4.2 (2024-02-09)
+
+### What's fixed
+- Automatically add `x-model="form.{{ honeypot }}"` to the honeypot field in the form partial. 79560c5d by @robdekort
+
 ## v4.4.1 (2024-02-09)
 
 ### What's fixed
