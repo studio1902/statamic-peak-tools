@@ -1,5 +1,10 @@
 # Changelog
 
+## v4.4.1 (2024-02-09)
+
+### What's fixed
+- Spelling in `successHook()`. 1b600222 by @robdekort
+
 ## v4.4.0 (2024-01-24)
 
 ### What's new
