@@ -8,6 +8,10 @@ use Studio1902\PeakTools\Listeners\UpdateImagesMissingAltCacheListener;
 
 class ServiceProvider extends AddonServiceProvider
 {
+    protected $commands = [
+        Commands\ClearSite::class,
+    ];
+
     protected $subscribe = [
         UpdateImagesMissingAltCacheListener::class,
     ];

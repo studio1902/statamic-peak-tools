@@ -1,5 +1,10 @@
 # Changelog
 
+## v4.5.0 (unreleased)
+
+### What's new
+- The `clear-site` command moved to this (free) addon.
+
 ## v4.4.2 (2024-02-09)
 
 ### What's fixed
