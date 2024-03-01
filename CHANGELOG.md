@@ -1,5 +1,10 @@
 # Changelog
 
+## v5.0.0 (2024-03-01)
+
+### What's new
+- Remove focus rings and use outlines. Follow along with [this PR](https://github.com/studio1902/statamic-peak/pull/384) if you want to update your site. #16 by @robdekort
+
 ## v4.4.2 (2024-02-09)
 
 ### What's fixed
