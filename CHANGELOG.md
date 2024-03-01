@@ -1,5 +1,10 @@
 # Changelog
 
+## v5.0.1 (2024-03-01)
+
+### What's improved
+- Use primary outline colour on Skip to content. 41e57f43 by @robdekort
+
 ## v5.0.0 (2024-03-01)
 
 ### What's new
