@@ -22,7 +22,7 @@ class UpdateImagesMissingAltCacheListener
      */
     public function subscribe($events)
     {
-        if (config('statamic-peak-tools.images_missing_alt.enabled')) {
+        if (collect(config('statamic.cp.widgets'))->contains('type', 'images_missing_alt')) {
             $events->listen(AssetDeleted::class, [self::class, 'handle']);
             $events->listen(AssetSaved::class, [self::class, 'handle']);
             $events->listen(AssetUploaded::class, [self::class, 'handle']);
