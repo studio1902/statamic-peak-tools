@@ -25,6 +25,15 @@ class ServiceProvider extends AddonServiceProvider
         \Studio1902\PeakTools\Updates\UpdateHoneypotField::class,
     ];
 
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__ . '/../config/statamic/peak-images-missing-alt.php' => config_path('statamic/peak-images-missing-alt.php'),
+        ], 'statamic-peak-tools-config');
+
+        parent::boot();
+    }
+
     public function bootAddon()
     {
         $this->registerPublishableViews();
