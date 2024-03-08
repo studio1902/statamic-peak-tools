@@ -1,8 +1,13 @@
 # Changelog
 
+## v5.1.1 (2024-03-08)
+
+### What's changed
+- Revert #18 and check the widget config array to autamtically see if the widget is present. a175ea3f by @robdekort
+
 ## v5.1.0 (2024-03-08)
 
-### What's improved
+### What's new
 - A config option to disable the missing alt widget and listeners. #18 by @robdekort
 
 ## v5.0.1 (2024-03-01)
