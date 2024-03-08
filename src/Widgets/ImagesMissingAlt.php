@@ -22,21 +22,23 @@ class ImagesMissingAlt extends Widget
      */
     public function html()
     {
-        $container = $this->config('container', 'assets');
+        if (config('statamic-peak-tools.images_missing_alt.enabled')) {
+            $container = $this->config('container', 'assets');
 
-        $containers = collect(is_array($container) ? $container : [$container]);
+            $containers = collect(is_array($container) ? $container : [$container]);
 
-        $assets = $containers->reduce(
-            fn ($assets, $container) => $assets->merge($this->service->getImagesWithMissingAlt($container)),
-            collect(),
-        );
+            $assets = $containers->reduce(
+                fn ($assets, $container) => $assets->merge($this->service->getImagesWithMissingAlt($container)),
+                collect(),
+            );
 
-        $assets = $assets->sortByDesc('last_modified')->values();
+            $assets = $assets->sortByDesc('last_modified')->values();
 
-        return view('statamic-peak-tools::widgets.images-missing-alt', [
-            'assets' => $assets->slice(0, $this->config('limit', 5)),
-            'amount' => $assets->count(),
-            'containers' => $containers->map(fn (string $container) => AssetContainer::findByHandle($container)->title()),
-        ]);
+            return view('statamic-peak-tools::widgets.images-missing-alt', [
+                'assets' => $assets->slice(0, $this->config('limit', 5)),
+                'amount' => $assets->count(),
+                'containers' => $containers->map(fn (string $container) => AssetContainer::findByHandle($container)->title()),
+            ]);
+        }
     }
 }
