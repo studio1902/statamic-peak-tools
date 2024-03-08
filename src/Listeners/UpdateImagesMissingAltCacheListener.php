@@ -22,7 +22,7 @@ class UpdateImagesMissingAltCacheListener
      */
     public function subscribe($events)
     {
-        if (config('statamic.peak-images-missing-alt.enabled')) {
+        if (config('statamic.peak_images_missing_alt.enabled')) {
             $events->listen(AssetDeleted::class, [self::class, 'handle']);
             $events->listen(AssetSaved::class, [self::class, 'handle']);
             $events->listen(AssetUploaded::class, [self::class, 'handle']);
