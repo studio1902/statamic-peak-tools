@@ -22,7 +22,7 @@ class ImagesMissingAlt extends Widget
      */
     public function html()
     {
-        if (config('statamic.peak_images_missing_alt.enabled')) {
+        if (config('statamic-peak-tools.images_missing_alt.enabled')) {
             $container = $this->config('container', 'assets');
 
             $containers = collect(is_array($container) ? $container : [$container]);
