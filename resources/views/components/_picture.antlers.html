@@ -44,6 +44,9 @@
         {{# Set srcset sizes. #}}
         {{ partial src="{ srcset_from ?: 'statamic-peak-tools::snippets/srcset_default' }" }}
 
+        {{# Image formats. #}}
+        {{ formats = ['webp' => 'image/webp', 'jpg' => 'image/jpeg'] }}
+
         <picture>
             {{ if extension == 'svg' || extension == 'gif' }}
                 <img
@@ -62,58 +65,34 @@
                     {{ /unless }}
                 />
             {{ else }}
-                <source
-                    srcset="
-                        {{ srcset scope="size" }}
-                            {{
-                                glide:image
-                                width="{ size:width }"
-                                height="{ size:width * size:ratio }"
-                                :bg="bg"
-                                :blur="blur"
-                                :brightness="brightness"
-                                :contrast="contrast"
-                                :filter="filter"
-                                :flip="flip"
-                                :gamma="gamma"
-                                :orient="orient"
-                                :pixelate="pixelate"
-                                :sharpen="sharpen"
-                                fit="crop_focal"
-                                format="webp"
-                                quality="{ quality ?? '85' }"
-                            }} {{ size:width }}w{{ !last ?= ',' }}
-                        {{ /srcset }}
-                    "
-                    sizes="{{ sizes ?? '(min-width: 1280px) 640px, (min-width: 768px) 50vw, 90vw' }}"
-                    type="image/webp"
-                >
-                <source
-                    srcset="
-                        {{ srcset scope="size" }}
-                            {{
-                                glide:image
-                                width="{ size:width }"
-                                height="{ size:width * size:ratio }"
-                                :bg="bg"
-                                :blur="blur"
-                                :brightness="brightness"
-                                :contrast="contrast"
-                                :filter="filter"
-                                :flip="flip"
-                                :gamma="gamma"
-                                :orient="orient"
-                                :pixelate="pixelate"
-                                :sharpen="sharpen"
-                                fit="crop_focal"
-                                quality="{ quality ?? '85' }"
-                            }}
-                            {{ size:width }}w{{ !last ?= ',' }}
-                        {{ /srcset }}
-                    "
-                    sizes="{{ sizes ?? '(min-width: 1280px) 640px, (min-width: 768px) 50vw, 90vw' }}"
-                    type="{{ image.mime_type }}"
-                >
+                {{ foreach:formats as="format|mime_type" }}
+                    <source
+                        srcset="
+                            {{ srcset scope="size" }}
+                                {{
+                                    glide:image
+                                    :format="format"
+                                    :width="size:width"
+                                    height="{ size:width * size:ratio }"
+                                    fit="crop_focal"
+                                    quality="{ quality ?? '85' }"
+                                    :bg="bg"
+                                    :blur="blur"
+                                    :brightness="brightness"
+                                    :contrast="contrast"
+                                    :filter="filter"
+                                    :flip="flip"
+                                    :gamma="gamma"
+                                    :orient="orient"
+                                    :pixelate="pixelate"
+                                    :sharpen="sharpen"
+                                }} {{ size:width }}w{{ !last ?= ',' }}
+                            {{ /srcset }}
+                        "
+                        sizes="{{ sizes ?? '(min-width: 1280px) 640px, (min-width: 768px) 50vw, 90vw' }}"
+                        type="{{ mime_type }}"
+                    >
+                {{ /foreach:formats }}
                 <img
                     width="{{ width }}"
                     height="{{ height }}"
