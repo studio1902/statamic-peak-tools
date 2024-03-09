@@ -1,5 +1,10 @@
 # Changelog
 
+## v5.1.2 (2024-03-09)
+
+### What's improved
+- Loop image formats in picture partial. 4d0787ce by @robdekort
+
 ## v5.1.1 (2024-03-08)
 
 ### What's changed
