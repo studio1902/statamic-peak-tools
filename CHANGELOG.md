@@ -1,5 +1,10 @@
 # Changelog
 
+## v5.1.3 (2024-03-11)
+
+### What's fixed
+- The form hanlder successHook() gets triggered again. f4ce337a by @robdekort
+
 ## v5.1.2 (2024-03-09)
 
 ### What's improved
