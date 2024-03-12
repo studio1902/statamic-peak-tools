@@ -1,5 +1,10 @@
 # Changelog
 
+## v5.3.0 (2024-03-12)
+
+### What's new
+- Add an option to track events from buttons when using Fathom, GTM or GTAG. An update script will take care of the changes needed to the button fieldset. c65fa6e2 by @robdekort
+
 ## v5.2.0 (2024-03-12)
 
 ### What's new
