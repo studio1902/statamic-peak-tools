@@ -1,5 +1,10 @@
 # Changelog
 
+## v5.2.0 (2024-03-12)
+
+### What's new
+- Log non-validation form errors to console. #19 by @prikkprikkprikk
+
 ## v5.1.3 (2024-03-11)
 
 ### What's fixed
