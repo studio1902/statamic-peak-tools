@@ -16,11 +16,10 @@
 {{ attr_title ?= 'title="{{ attr_title }}"' }}
 {{ attr_aria ?= 'aria-label="{{ attr_aria }}"' }}
 {{ if environment == 'production' && seo:trackers_production && tracker_event }}
-    x-data
     {{ if seo:use_fathom }}
-        @click="fathom.trackEvent({{ tracker_event }})"
+        onclick="fathom.trackEvent('{{ tracker_event }}')"
     {{ /if }}
     {{ if tracker_type === 'gtag' || tracker_type === 'gtm' }}
-        @click="dataLayer.push({'event': '{{ tracker_event }}'})"
+        onclick="dataLayer.push({'event': '{{ tracker_event }}'})"
     {{ /if }}
 {{ /if  }}
