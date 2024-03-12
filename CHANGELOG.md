@@ -1,5 +1,10 @@
 # Changelog
 
+## v5.3.1 (2024-03-12)
+
+### What's fixed
+- Button event click logic: remove Alpine, add quotes. be6704c7 by @robdekort
+
 ## v5.3.0 (2024-03-12)
 
 ### What's new
