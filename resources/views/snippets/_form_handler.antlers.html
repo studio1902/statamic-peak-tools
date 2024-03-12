@@ -46,7 +46,13 @@
                         })
                         .then(this.$refs.form.scrollIntoView())
                         .catch(error => {
-                            this.$focus.focus(document.querySelector('#summary').querySelector('a'))
+                            const summary = document.querySelector('#summary')
+                            if (summary) {
+                                this.$focus.focus(summary.querySelector('a'))
+                            }
+                            else {
+                                console.log(error)
+                            }
                         })
                 }
             }))
