@@ -1,5 +1,10 @@
 # Changelog
 
+## v5.3.2 (2024-03-13)
+
+### What's fixed
+- Add missing utility classes for the missing alt text widget. 83183e07 by @robdekort
+
 ## v5.3.1 (2024-03-12)
 
 ### What's fixed
