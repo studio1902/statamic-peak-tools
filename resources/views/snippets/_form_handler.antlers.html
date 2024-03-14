@@ -28,7 +28,7 @@
                         }
                     )
                 },
-                successHook() {
+                successHook(response) {
                     {{ success_hook }}
                 },
                 submit() {
@@ -39,7 +39,7 @@
                             this.$refs.form.reset()
                             this.success = true
                             this.submitted = false
-                            this.successHook()
+                            this.successHook(response)
                             setTimeout(() => {
                                 this.success = false
                             }, 4500)
