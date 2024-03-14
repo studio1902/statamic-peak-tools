@@ -1,5 +1,10 @@
 # Changelog
 
+## v5.4.0 (2024-03-14)
+
+### What's new
+- Add response object as a parameter to the form handler's success hook. #20 @prikkprikkprikk
+
 ## v5.3.2 (2024-03-13)
 
 ### What's fixed
