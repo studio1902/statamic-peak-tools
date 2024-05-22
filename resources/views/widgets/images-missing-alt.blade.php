@@ -1,15 +1,15 @@
 <div class="card p-0 overflow-hidden h-full">
-    <div class="flex justify-between items-center p-4">
+    <div class="flex justify-between items-center p-4 dark:bg-dark-650 dark:border-b dark:border-dark-900">
         <h2>
             <div class="flex items-center">
-                <div class="h-6 w-6 mr-2 text-gray-800">
+                <div class="h-6 w-6 mr-2 text-gray-800 dark:text-dark-200">
                     @cp_svg('icons/light/assets')
                 </div>
                 <span>{{ __('strings.widget_assets_title', ['container' => $containers[0]]) }}</span>
             </div>
         </h2>
     </div>
-    <div class="content px-4 pb-4">
+    <div class="content px-4 py-4">
         <p>
             {{ __('strings.widget_assets_explanation') }}
             {{ trans_choice('strings.widget_assets_count', $amount, ['amount' => $amount]) }}
