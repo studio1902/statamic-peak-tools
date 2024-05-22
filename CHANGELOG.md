@@ -1,9 +1,9 @@
 # Changelog
 
-## v6.0.0 (2024-04-19)
+## v6.1.0 (2024-05-22)
 
 ### What's new
-- Support forr dark mode in the missing alt text widget. e4bb2137 by @robdekort
+- Support for dark mode in the missing alt text widget. e4bb2137 by @robdekort
 
 ## v6.0.0 (2024-04-19)
 
