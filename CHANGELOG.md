@@ -3,6 +3,11 @@
 ## v6.0.0 (2024-04-19)
 
 ### What's new
+- Support forr dark mode in the missing alt text widget. e4bb2137 by @robdekort
+
+## v6.0.0 (2024-04-19)
+
+### What's new
 - Support Statamic v5 and prefix SVG tag attributes. #21 by @robdekort
 
 ## v5.4.0 (2024-03-14)
