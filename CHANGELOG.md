@@ -1,5 +1,10 @@
 # Changelog
 
+## v6.2.0 (2024-07-04)
+
+### What's new
+- Move the form handler `setTimeout()` function into the `successHook()` to allow it to be overridden or skipped. #22 by @andjsch
+
 ## v6.1.0 (2024-05-22)
 
 ### What's new
