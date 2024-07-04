@@ -30,6 +30,10 @@
                 },
                 successHook(response) {
                     {{ success_hook }}
+
+                    setTimeout(() => {
+                        this.success = false
+                    }, 4500)
                 },
                 submit() {
                     this.submitted = true
@@ -40,9 +44,6 @@
                             this.success = true
                             this.submitted = false
                             this.successHook(response)
-                            setTimeout(() => {
-                                this.success = false
-                            }, 4500)
                         })
                         .then(this.$refs.form.scrollIntoView())
                         .catch(error => {
