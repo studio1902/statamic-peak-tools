@@ -11,7 +11,7 @@ class UpdateImagesMissingAltCacheListener
 {
     public function handle($event)
     {
-        UpdateMissingAltCacheJob::dispatch($event);
+        collect(config('statamic.cp.widgets'))->where('type', 'images_missing_alt')->contains('container', $event->asset->container->handle) && UpdateMissingAltCacheJob::dispatch($event);
     }
 
     /**
