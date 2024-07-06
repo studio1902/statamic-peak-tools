@@ -1,5 +1,10 @@
 # Changelog
 
+## v6.3.0 (2024-07-06)
+
+### What's new
+- Only dispatch `UpdateMissingAltCacheJob` when there's a widget in `cp.php` for the current container the asset is in. f4af0097 by @robdekort
+
 ## v6.2.0 (2024-07-04)
 
 ### What's new
