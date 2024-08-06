@@ -1,5 +1,10 @@
 # Changelog
 
+## v6.3.1 (2024-08-06)
+
+### What's fixed
+- Make sure to only add a full stop to alt text when there is alt text. f5e1e1b0 by @robdekort
+
 ## v6.3.0 (2024-07-06)
 
 ### What's new
