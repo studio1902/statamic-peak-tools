@@ -1,5 +1,10 @@
 # Changelog
 
+## v6.3.2 (2024-08-07)
+
+### What's improved
+- Support lazy loading for svg's. fb575a78 by @robdekort
+
 ## v6.3.1 (2024-08-06)
 
 ### What's fixed
