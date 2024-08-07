@@ -63,6 +63,9 @@
                     {{ unless alt }}
                         aria-hidden="true"
                     {{ /unless }}
+                    {{ if lazy }}
+                        loading="lazy"
+                    {{ /if }}
                 />
             {{ else }}
                 {{ foreach:formats as="format|mime_type" }}
