@@ -1,5 +1,10 @@
 # Changelog
 
+## v6.3.3 (2024-10-09)
+
+### What's changed
+- Increase form success timeout message to 10 seconds. 1d105167 by @robdekort
+
 ## v6.3.2 (2024-08-07)
 
 ### What's improved
