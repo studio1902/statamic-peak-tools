@@ -1,5 +1,10 @@
 # Changelog
 
+## v6.4.0 (2024-11-13)
+
+### What's new
+- Missing alt widget translations moved to this addon. 42dd7707 by @robdekort
+
 ## v6.3.3 (2024-10-09)
 
 ### What's changed
