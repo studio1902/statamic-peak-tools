@@ -40,6 +40,7 @@ class ServiceProvider extends AddonServiceProvider
     public function bootAddon()
     {
         $this->registerPublishableViews();
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'statamic-peak-tools');
 
         // Provide custom field conditions global tracker data to hide/show the event field in the button partial.
         View::composer('statamic::layout', function ($view) {
