@@ -1,5 +1,10 @@
 # Changelog
 
+## v6.5.0 (2024-11-29)
+
+### What's new
+- Add support for the Captcha addon. #23 by @aryehraber
+
 ## v6.4.0 (2024-11-13)
 
 ### What's new
