@@ -1,5 +1,10 @@
 # Changelog
 
+## v6.7.0 (2025-01-21)
+
+### What's new
+- Allow for multiple skip links. #24 by @andjsch
+
 ## v6.6.0 (2024-12-06)
 
 ### What's changed
