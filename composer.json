@@ -15,5 +15,8 @@
                 "Studio1902\\PeakTools\\ServiceProvider"
             ]
         }
+    },
+    "require": {
+        "statamic/cms": "^5.0"
     }
 }

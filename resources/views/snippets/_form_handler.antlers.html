@@ -12,31 +12,52 @@
         document.addEventListener('alpine:initializing', () => {
             Alpine.data('formHandler', () => ({
                 success: false,
-                form: '',
+                submitted: false,
+                form: null,
                 init() {
                     this.form = this.$form(
                         'post',
                         this.$refs.form.getAttribute('action'),
-                        JSON.parse(this.$refs.form.getAttribute('x-data')).dynamic_form
+                        JSON.parse(this.$refs.form.getAttribute('x-data')).form,
+                        {
+                            headers: {
+                                'X-CSRF-Token': {
+                                    toString: () => this.$refs.form.querySelector('[name="_token"]').value,
+                                }
+                            }
+                        }
                     )
                 },
-                succesHook() {
+                successHook(response) {
                     {{ success_hook }}
+
+                    setTimeout(() => {
+                        this.success = false
+                    }, 10000)
                 },
                 submit() {
+                    if (Object.keys(this.form).includes('captcha-response')) {
+                        this.form['captcha-response'] = this.$refs.form.querySelector('{{ captcha:selector }}')?.value
+                    }
+
+                    this.submitted = true
                     this.form.submit()
                         .then(response => {
                             this.form.reset()
                             this.$refs.form.reset()
                             this.success = true
-                            this.succesHook()
-                            setTimeout(() => {
-                                this.success = false
-                            }, 4500)
+                            this.submitted = false
+                            this.successHook(response)
                         })
                         .then(this.$refs.form.scrollIntoView())
                         .catch(error => {
-                            this.$focus.focus(document.querySelector('#summary').querySelector('a'))
+                            const summary = document.querySelector('#summary')
+                            if (summary) {
+                                this.$focus.focus(summary.querySelector('a'))
+                            }
+                            else {
+                                console.log(error)
+                            }
                         })
                 }
             }))

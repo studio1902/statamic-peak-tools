@@ -25,6 +25,7 @@ class Service
                 return Asset::query()
                     ->where('container', $container)
                     ->where('is_image', true)
+                    ->where('exempt_from_alt', '!=', true)
                     ->whereNull('alt')
                     ->orderBy('last_modified', 'desc')
                     ->limit(100)
