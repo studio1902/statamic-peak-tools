@@ -1,5 +1,10 @@
 # Changelog
 
+## v6.7.1 (2025-01-21)
+
+### What's changed
+- Use outline instead of rings for skip links. fa30fd45 by @robdekort
+
 ## v6.7.0 (2025-01-21)
 
 ### What's new
