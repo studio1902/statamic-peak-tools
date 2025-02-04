@@ -1,5 +1,10 @@
 # Changelog
 
+## v7.0.0 (2025-02-04)
+
+### What's changed
+- Breaking: Push `noscript` styles to the `<head>` to pass w3c validation. Add `{{ stack:head }}` to your layout file to continue using this feature. 959f5135 by @robdekort
+
 ## v6.7.1 (2025-01-21)
 
 ### What's changed
