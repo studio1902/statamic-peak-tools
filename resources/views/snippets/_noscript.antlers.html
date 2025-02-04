@@ -6,14 +6,19 @@
 <!-- statamic-peak-tools::snippets/_noscript.antlers.html -->
 {{ unless live_preview }}
     <noscript>
-        <style>
-            nav.hidden,
-            nav ul [x-cloak],
-            nav ul li ul {
-                display: block !important;
-            }
-        </style>
         <p class="relative z-50 py-3 px-4 bg-gray-100 border-b border-gray-200 text-center font-bold text-xs text-gray-600">{{ trans:strings.no_script }}</p>
     </noscript>
+
+    {{ push:head }}
+        <noscript>
+            <style>
+                nav.hidden,
+                nav ul [x-cloak],
+                nav ul li ul {
+                    display: block !important;
+                }
+            </style>
+        </noscript>
+    {{ /push:head }}
 {{ /unless }}
 <!-- End: statamic-peak-tools::snippets/_noscript.antlers.html -->
