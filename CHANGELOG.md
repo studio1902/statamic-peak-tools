@@ -1,5 +1,10 @@
 # Changelog
 
+## v7.1.0 (2025-02-05)
+
+### What's new
+- The skip links partial now takes a `{{ class }}` argument so you can style skip links without publishing the partial. 959c26d1 by @robdekort
+
 ## v7.0.0 (2025-02-04)
 
 ### What's changed
