@@ -15,11 +15,16 @@
 {{ target_blank ?= 'rel="noopener" target="_blank"' }}
 {{ attr_title ?= 'title="{{ attr_title }}"' }}
 {{ attr_aria ?= 'aria-label="{{ attr_aria }}"' }}
-{{ if environment == 'production' && seo:trackers_production && tracker_event }}
+
+{{ if
+    (tracker_event && environment == 'local' && seo:trackers_local) or
+    (tracker_event && environment == 'staging' && seo:trackers_staging) or
+    (tracker_event && environment == 'production' && seo:trackers_production)
+}}
     {{ if seo:use_fathom }}
         onclick="fathom.trackEvent('{{ tracker_event }}')"
     {{ /if }}
-    {{ if tracker_type === 'gtag' || tracker_type === 'gtm' }}
-        onclick="dataLayer.push({'event': '{{ tracker_event }}'})"
+    {{ if (seo:tracker_type === 'gtag' || seo:tracker_type === 'gtm' || seo:tracker_type === 'sgtm') }}
+        onclick="gtag({'event': '{{ tracker_event }}'})"
     {{ /if }}
 {{ /if  }}
