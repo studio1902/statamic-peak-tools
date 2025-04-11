@@ -1,5 +1,10 @@
 # Changelog
 
+## v7.2.0 (2025-04-11)
+
+### What's new
+- Add support for server side tracking. 889a0954 by @porstendorfer @robdekort
+
 ## v7.1.0 (2025-02-05)
 
 ### What's new
