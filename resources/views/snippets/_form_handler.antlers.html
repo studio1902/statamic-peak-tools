@@ -44,6 +44,7 @@
                     this.form.submit()
                         .then(response => {
                             this.form.reset()
+                            this.form.setErrors([])
                             this.$refs.form.reset()
                             this.success = true
                             this.submitted = false
