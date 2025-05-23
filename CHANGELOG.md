@@ -1,5 +1,10 @@
 # Changelog
 
+## v7.3.0 (2025-05-23)
+
+### What's new
+- The ability to trash the Peak Toolbar for the duration of the current session. 62175d39 by @robdekort
+
 ## v7.2.0 (2025-04-11)
 
 ### What's new
