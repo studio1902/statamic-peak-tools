@@ -1,5 +1,10 @@
 # Changelog
 
+## v7.3.1 (2025-05-23)
+
+### What's fixed
+- Re-validate form validation on successful submission to clear asset field required errors. b78c6b09 by @robdekort
+
 ## v7.3.0 (2025-05-23)
 
 ### What's new
