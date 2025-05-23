@@ -8,7 +8,11 @@
     {{ nocache }}
         <aside
             class="fixed z-50 bottom-1 right-1 flex text-xs divide-x divide-white shadow-sm divide-solid motion-safe:transition-opacity hover:opacity-100 has-[button:focus,a:focus]:opacity-100"
-            x-data="{ toolbarVisible: $persist(true).as('toolbarVisible') }"
+            x-show="!toolbarTrashed"
+            x-data="{
+                toolbarVisible: $persist(true).as('toolbarVisible'),
+                toolbarTrashed: $persist(false).using(sessionStorage).as('toolbarTrashed')
+            }"
             x-ref="toolbar"
             :class="{ 'opacity-100': toolbarVisible, 'opacity-0': !toolbarVisible }"
             x-cloak
@@ -38,8 +42,8 @@
             </button>
 
             <button
-                @click="$refs.toolbar.remove()"
-                title="Remove toolbar" aria-label="Remove toolbar" class="flex items-center justify-center px-2 bg-gray-200 hover:bg-gray-300"
+                @click="toolbarTrashed = true"
+                title="Remove toolbar for the duration of the current session" aria-label="Remove toolbar for the duration of the current session" class="flex items-center justify-center px-2 bg-gray-200 hover:bg-gray-300"
             >
                 {{ svg:trash attr:class="w-4 h-4 text-yellow-800 stroke-current" attr:alt="" attr:aria-hidden="true" }}
             </button>
