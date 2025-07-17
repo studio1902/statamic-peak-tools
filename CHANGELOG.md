@@ -1,5 +1,10 @@
 # Changelog
 
+## v7.3.2 (2025-07-17)
+
+### What's fixed
+- Fix skip link classes. 54576cf7 by @robdekort
+
 ## v7.3.1 (2025-05-23)
 
 ### What's fixed
