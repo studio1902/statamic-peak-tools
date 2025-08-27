@@ -1,0 +1,5 @@
+@layer utilities {
+    .bg-red-500 {
+        background-color: oklch(63.7% .237 25.331);
+    }
+}
