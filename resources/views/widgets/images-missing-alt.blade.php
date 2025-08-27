@@ -32,7 +32,7 @@
                             <td class="p-0.75 text-sm">
                                 <div class="flex items-center gap-2">
                                     <span class="flex items-center gap-2">
-                                        <span class="size-2 rounded-full bg-red-500"></span>
+                                        <span class="size-2 rounded-full peak:bg-red-500"></span>
                                     </span>
 
                                     <a href="{{ $asset['edit_url'] }}" aria-label="{{ __('statamic-peak-tools::default.widget_assets_edit') }}">{{ $asset['basename'] }}</a>
