@@ -1,1 +1,5 @@
-@import "tailwindcss";
+@import "tailwindcss/theme.css" layer(theme) source(none);
+@import "tailwindcss/utilities.css" layer(utilities) source(none);
+@source '../js';
+@source '../views/cp';
+@source not statamic;
