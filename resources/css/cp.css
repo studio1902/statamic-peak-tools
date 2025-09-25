@@ -1,7 +1,3 @@
-@import "@statamic/cms/tailwind.css";
-@source '../js';
-@source '../views/cp';
-
 /* Remove design fluff from page wrapper. */
 .main-content {
     padding: 0;
