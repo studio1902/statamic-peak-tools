@@ -3,14 +3,14 @@
 @source '../views/cp';
 
 /* Remove design fluff from page wrapper. */
-.main-content {
-    padding: 0;
-}
-
 .main-content,
 main,
 .content-card {
     border-radius: 0px !important;
+}
+
+.main-content {
+    padding: 0;
 }
 
 .content-card {
@@ -33,11 +33,23 @@ textarea,
     background-image: none !important;
 }
 
+.dark {
+    input,
+    textarea,
+    [data-ui-combobox-trigger]:not(
+        [data-ui-global-site-selector] [data-ui-combobox-trigger]
+    ) {
+        background-color: var(--theme-color-gray-800) !important;
+        box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, .1) !important;
+        background-image: none !important;
+    }
+}
+
 .not-\[\.link-fieldtype_\&\]\:p-2:not(.link-fieldtype *) {
     background-color: white;
 }
 
-/* Restyle panels, restore pre v6 look for improved visual hierarchy and less grey. */
+/* Restyle panels. */
 [data-ui-panel]:not([data-ui-panel] [data-ui-panel]) {
     background-color: var(--theme-color-gray-100);
     border: 1px solid var(--theme-color-gray-300);
@@ -94,6 +106,16 @@ textarea,
         margin-inline: calc(var(--spacing) * -3.5);
         padding-block: calc(var(--spacing) * 3.5);
         padding-inline: calc(var(--spacing) * 7);
+    }
+}
+
+.dark [data-ui-panel]:not([data-ui-panel] [data-ui-panel]) {
+    background-color: var(--theme-color-gray-800) !important;
+    border: 1px solid var(--theme-color-gray-700) !important;
+
+    [data-ui-card]:not(.blueprint-section-field) {
+        background: var(--theme-color-gray-700) !important;
+        border-top: 1px solid var(--theme-color-gray-700) !important;
     }
 }
 
