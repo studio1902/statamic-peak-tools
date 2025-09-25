@@ -18,6 +18,10 @@ main,
     border-bottom: 0px;
 }
 
+.nav-main {
+    padding-right: 1rem !important;
+}
+
 /* Improve imputs and textareas */
 input,
 textarea,
