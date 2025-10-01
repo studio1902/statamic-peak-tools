@@ -3,7 +3,7 @@
 @source '../views/cp';
 
 /* Remove design fluff from page wrapper. */
-.main-content,
+/* .main-content,
 main,
 .content-card {
     border-radius: 0px !important;
@@ -20,10 +20,10 @@ main,
 
 .nav-main {
     padding-right: 1rem !important;
-}
+} */
 
 /* Improve imputs and textareas */
-input,
+/* input,
 textarea,
 [data-ui-combobox-trigger]:not(
     [data-ui-global-site-selector] [data-ui-combobox-trigger]
@@ -47,10 +47,10 @@ textarea,
 
 .not-\[\.link-fieldtype_\&\]\:p-2:not(.link-fieldtype *) {
     background-color: white;
-}
+} */
 
 /* Restyle panels. */
-[data-ui-panel]:not([data-ui-panel] [data-ui-panel]) {
+/* [data-ui-panel]:not([data-ui-panel] [data-ui-panel]) {
     background-color: var(--theme-color-gray-100);
     border: 1px solid var(--theme-color-gray-300);
     overflow: hidden;
@@ -126,4 +126,4 @@ textarea,
 
 .p-px:has([data-ui-card]) {
     padding: 0px;
-}
+} */
