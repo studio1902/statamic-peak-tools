@@ -14,7 +14,7 @@
                 @endif
                 @forelse ($assets as $asset)
                     <tr>
-                        <td class="px-0.75 py-1.5 text-sm">
+                        <td class="px-0.75 py-0.5 text-sm">
                             <div class="flex items-center gap-2">
                                 <span class="flex items-center gap-2">
                                     <span class="size-2 rounded-full bg-red-500"></span>
