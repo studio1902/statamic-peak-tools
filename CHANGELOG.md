@@ -1,5 +1,10 @@
 # Changelog
 
+## v7.3.4 (2025-11-04)
+
+### What's improved
+- Conditionally load SEO globals so you can manually disable and uninstall the SEO addon. 22164579 by @robdekort
+
 ## v7.3.2 (2025-07-17)
 
 ### What's fixed
