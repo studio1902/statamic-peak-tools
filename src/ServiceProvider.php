@@ -49,8 +49,8 @@ class ServiceProvider extends AddonServiceProvider
             }
 
             Statamic::provideToScript([
-                'use_fathom' => GlobalSet::findByHandle('seo')->inDefaultSite()->get('use_fathom'),
-                'use_google' => GlobalSet::findByHandle('seo')->inDefaultSite()->get('tracker_type') === 'gtm' || GlobalSet::findByHandle('seo')->inDefaultSite()->get('tracker_type') === 'gtag' || GlobalSet::findByHandle('seo')->inDefaultSite()->get('tracker_type') === 'sgtm',
+                'use_fathom' => GlobalSet::findByHandle('seo')?->inDefaultSite()->get('use_fathom'),
+                'use_google' => GlobalSet::findByHandle('seo')?->inDefaultSite()->get('tracker_type') === 'gtm' || GlobalSet::findByHandle('seo')?->inDefaultSite()->get('tracker_type') === 'gtag' || GlobalSet::findByHandle('seo')?->inDefaultSite()->get('tracker_type') === 'sgtm',
             ]);
         });
     }
