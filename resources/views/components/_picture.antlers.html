@@ -45,7 +45,7 @@
         {{ partial src="{ srcset_from ?: 'statamic-peak-tools::snippets/srcset_default' }" }}
 
         {{# Image formats. #}}
-        {{ formats = formats ?? ['webp' => 'image/webp', 'jpg' => 'image/jpeg'] }}
+        {{ formats = formats ?? ['avif' => 'image/avif', 'webp' => 'image/webp', 'jpg' => 'image/jpeg'] }}
 
         <picture>
             {{ if extension == 'svg' || extension == 'gif' }}
