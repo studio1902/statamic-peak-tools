@@ -1,5 +1,10 @@
 # Changelog
 
+## v7.4.0 (2025-11-11)
+
+### What's new
+- The ability to override the picture formats array. 671db551 by @robdekort
+
 ## v7.3.3 (2025-11-04)
 
 ### What's improved
