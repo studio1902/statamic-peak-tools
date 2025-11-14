@@ -1,5 +1,10 @@
 # Changelog
 
+## v7.5.0 (2025-11-14)
+
+### What's new
+- Extract default image formats into a config file so they can be customized. #28 by @marcorieser
+
 ## v7.4.0 (2025-11-11)
 
 ### What's new
