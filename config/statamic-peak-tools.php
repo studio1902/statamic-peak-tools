@@ -3,7 +3,7 @@
 return [
     'picture' => [
         'default_formats' => [
-            // 'avif' => 'image/avif',
+            'avif' => 'image/avif',
             'webp' => 'image/webp',
             'jpg' => 'image/jpeg',
         ]
