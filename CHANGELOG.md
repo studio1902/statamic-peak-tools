@@ -1,5 +1,10 @@
 # Changelog
 
+## v7.5.1 (2026-01-09)
+
+### What's changed
+- Disable AVIF by default as not all servers support it yet. Will be re-enabled in the next major release as a breaking change. b7477ef1 by @robdekort
+
 ## v7.5.0 (2025-11-14)
 
 ### What's new
