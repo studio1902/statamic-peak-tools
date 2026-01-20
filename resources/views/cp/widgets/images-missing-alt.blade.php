@@ -9,7 +9,7 @@
         </p>
 
         @if ($assets)
-            <table class="w-full">
+            <table class="w-full mb-4">
                 <tbody>
                 @endif
                 @forelse ($assets as $asset)
