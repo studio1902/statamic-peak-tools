@@ -8,9 +8,14 @@ use Statamic\Facades\GlobalSet;
 use Statamic\Providers\AddonServiceProvider;
 use Studio1902\PeakTools\Widgets\ImagesMissingAlt;
 use Studio1902\PeakTools\Listeners\UpdateImagesMissingAltCacheListener;
+use Studio1902\PeakTools\Tags\Picture;
 
 class ServiceProvider extends AddonServiceProvider
 {
+    protected $tags = [
+        Picture::class,
+    ];
+
     protected $subscribe = [
         UpdateImagesMissingAltCacheListener::class,
     ];
