@@ -22,115 +22,48 @@
     @param quality int Set image quality. Defaults to 85.
 #}}
 
-<!-- statamic-peak-tools::components/_picture.antlers.html -->
-{{ if image }}
-    {{ asset :url="image" }}
-        {{# Configure aspect ratio's. #}}
-        {{ ratio = null }}
-        {{ ratio_large = null }}
-        {{ aspect_ratio | trim | explode(' ') }}
-            {{ if value | contains('large:') }}
-                {{ aspect = value | explode(':') | last }}
-                {{ ratio_large = (aspect | explode('/') | last) / (aspect | explode('/') | first) }}
-            {{ elseif value != '' }}
-                {{ ratio = (value | explode('/') | last) / (value | explode('/') | first) }}
-            {{ /if }}
-        {{ /aspect_ratio }}
-        {{ width && height ?= (original_ratio = height / width) }}
-
-        {{# Initialize srcset variable in current scope to be overwritable from partial below. #}}
-        {{ srcset = null }}
-
-        {{# Set srcset sizes. #}}
-        {{ partial src="{ srcset_from ?: 'statamic-peak-tools::snippets/srcset_default' }" }}
-
-        {{# Image formats. #}}
-        {{ formats = formats ?? {config:statamic-peak-tools:picture:default_formats} }}
-
-        <picture>
-            {{ if extension == 'svg' || extension == 'gif' }}
-                <img
-                    {{ if cover }}
-                        class="object-cover w-full h-full {{ class }}"
-                        style="object-position: {{ focus | background_position }}"
-                    {{ else }}
-                        class="{{ class }}"
-                    {{ /if }}
-                    src="{{ url }}"
-                    alt="{{ alt ?= alt | ensure_right('.') | entities }}"
-                    width="{{ width }}"
-                    height="{{ height }}"
-                    {{ unless alt }}
-                        aria-hidden="true"
-                    {{ /unless }}
-                    {{ if lazy }}
-                        loading="lazy"
-                    {{ /if }}
-                />
-            {{ else }}
-                {{ foreach:formats as="format|mime_type" }}
-                    <source
-                        srcset="
-                            {{ srcset scope="size" }}
-                                {{
-                                    glide:image
-                                    :format="format"
-                                    :width="size:width"
-                                    height="{ size:width * size:ratio }"
-                                    fit="crop_focal"
-                                    quality="{ quality ?? '85' }"
-                                    :bg="bg"
-                                    :blur="blur"
-                                    :brightness="brightness"
-                                    :contrast="contrast"
-                                    :filter="filter"
-                                    :flip="flip"
-                                    :gamma="gamma"
-                                    :orient="orient"
-                                    :pixelate="pixelate"
-                                    :sharpen="sharpen"
-                                }} {{ size:width }}w{{ !last ?= ',' }}
-                            {{ /srcset }}
-                        "
-                        sizes="{{ sizes ?? '(min-width: 1280px) 640px, (min-width: 768px) 50vw, 90vw' }}"
-                        type="{{ mime_type }}"
-                    >
-                {{ /foreach:formats }}
-                <img
-                    width="{{ width }}"
-                    height="{{ height }}"
-                    src="{{ glide:image
-                        width="1024"
-                        height="{ 1024 * original_ratio }"
-                        fit="crop_focal"
-                        :bg="bg"
-                        :blur="blur"
-                        :brightness="brightness"
-                        :contrast="contrast"
-                        :filter="filter"
-                        :flip="flip"
-                        :gamma="gamma"
-                        :orient="orient"
-                        :pixelate="pixelate"
-                        :sharpen="sharpen"
-                        quality="{ quality ?? '85' }"
-                    }}"
-                    alt="{{ alt ?= alt | ensure_right('.') | entities }}"
-                    {{ if cover }}
-                        class="object-cover w-full h-full {{ class }}"
-                        style="object-position: {{ focus | background_position }}"
-                    {{ else }}
-                        class="{{ class }}"
-                    {{ /if }}
-                    {{ unless alt }}
-                        aria-hidden="true"
-                    {{ /unless }}
-                    {{ if lazy }}
-                        loading="lazy"
-                    {{ /if }}
-                >
-            {{ /if }}
-        </picture>
-    {{ /asset }}
+{{ if srcset_from }}
+    {{# Legacy Antlers rendering for custom srcset definitions #}}
+    {{ partial:statamic-peak-tools::components/picture_legacy
+        :image="image"
+        :sizes="sizes"
+        :aspect_ratio="aspect_ratio"
+        :skip_ratio_steps="skip_ratio_steps"
+        :srcset_from="srcset_from"
+        :class="class"
+        :cover="cover"
+        :lazy="lazy"
+        :quality="quality"
+        :bg="bg"
+        :blur="blur"
+        :brightness="brightness"
+        :contrast="contrast"
+        :filter="filter"
+        :flip="flip"
+        :gamma="gamma"
+        :orient="orient"
+        :pixelate="pixelate"
+        :sharpen="sharpen"
+    }}
+{{ else }}
+    {{ picture
+        :image="image"
+        :sizes="sizes"
+        :aspect_ratio="aspect_ratio"
+        :skip_ratio_steps="skip_ratio_steps"
+        :class="class"
+        :cover="cover"
+        :lazy="lazy"
+        :quality="quality"
+        :bg="bg"
+        :blur="blur"
+        :brightness="brightness"
+        :contrast="contrast"
+        :filter="filter"
+        :flip="flip"
+        :gamma="gamma"
+        :orient="orient"
+        :pixelate="pixelate"
+        :sharpen="sharpen"
+    }}
 {{ /if }}
-<!-- End: statamic-peak-tools::components/_picture.antlers.html -->
