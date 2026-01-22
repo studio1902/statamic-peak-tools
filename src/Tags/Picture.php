@@ -11,8 +11,6 @@ use Statamic\View\Antlers\Language\Runtime\StackReplacementManager;
 
 class Picture extends Tags
 {
-    protected array $defaultWidths = [320, 480, 640, 768, 1024, 1280, 1440, 1536, 1680];
-
     /**
      * Maps to {{ picture }}.
      */
@@ -138,7 +136,7 @@ class Picture extends Tags
 
         $srcsets = [];
 
-        foreach ($this->defaultWidths as $width) {
+        foreach ($this->getWidths() as $width) {
             // Determine which ratio to use based on width and skip_ratio_steps
             $useRatio = $ratios['default'] ?? $originalRatio;
 
@@ -413,8 +411,22 @@ class Picture extends Tags
         }
 
         return config('statamic-peak-tools.picture.default_formats', [
+            'avif' => 'image/avif',
             'webp' => 'image/webp',
             'jpg' => 'image/jpeg',
+        ]);
+    }
+
+    protected function getWidths(): array
+    {
+        $widths = $this->params->get('widths');
+
+        if ($widths && is_array($widths)) {
+            return $widths;
+        }
+
+        return config('statamic-peak-tools.picture.default_widths', [
+            320, 480, 640, 768, 1024, 1280, 1440, 1536, 1680,
         ]);
     }
 
