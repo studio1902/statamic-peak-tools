@@ -53,11 +53,11 @@ class Picture extends Tags
         // Get formats configuration
         $formats = $this->getFormats();
 
-        // Get aspect ratio configuration
-        $ratios = $this->parseAspectRatio($this->params->get('aspect_ratio'));
+        // Get aspect ratio
+        $ratio = $this->parseAspectRatio($this->params->get('aspect_ratio'));
 
-        // Build srcset for all widths and ratios
-        $srcsets = $this->buildSrcsets($asset, $ratios);
+        // Build srcset for all widths
+        $srcsets = $this->buildSrcsets($asset, $ratio);
 
         // Handle art direction sources
         $artDirectionSources = $this->buildArtDirectionSources();
@@ -99,60 +99,33 @@ class Picture extends Tags
         return null;
     }
 
-    protected function parseAspectRatio(?string $value): array
+    protected function parseAspectRatio(?string $value): ?float
     {
         if (! $value) {
-            return ['default' => null, 'large' => null];
+            return null;
         }
 
-        $ratio = null;
-        $ratioLarge = null;
+        $value = trim($value);
 
-        $parts = array_filter(explode(' ', trim($value)));
+        if (str_contains($value, '/')) {
+            [$num, $denom] = explode('/', $value);
 
-        foreach ($parts as $part) {
-            if (str_contains($part, 'large:')) {
-                $aspect = explode(':', $part)[1] ?? null;
-                if ($aspect && str_contains($aspect, '/')) {
-                    [$num, $denom] = explode('/', $aspect);
-                    $ratioLarge = (float) $denom / (float) $num;
-                }
-            } elseif (str_contains($part, '/')) {
-                [$num, $denom] = explode('/', $part);
-                $ratio = (float) $denom / (float) $num;
-            }
+            return (float) $denom / (float) $num;
         }
 
-        return ['default' => $ratio, 'large' => $ratioLarge];
+        return null;
     }
 
-    protected function buildSrcsets(Asset $asset, array $ratios): array
+    protected function buildSrcsets(Asset $asset, ?float $ratio): array
     {
         $originalRatio = $asset->height() && $asset->width()
             ? $asset->height() / $asset->width()
             : null;
 
-        $skipRatioSteps = $this->params->int('skip_ratio_steps', 0);
-
+        $useRatio = $ratio ?? $originalRatio;
         $srcsets = [];
 
         foreach ($this->getWidths() as $width) {
-            // Determine which ratio to use based on width and skip_ratio_steps
-            $useRatio = $ratios['default'] ?? $originalRatio;
-
-            // Apply large ratio for larger widths (1024+) based on skip_ratio_steps
-            if ($ratios['large']) {
-                if ($width >= 1024 && $skipRatioSteps < 1) {
-                    $useRatio = $ratios['large'];
-                } elseif ($width >= 1280 && $skipRatioSteps < 2) {
-                    $useRatio = $ratios['large'];
-                } elseif ($width >= 1440 && $skipRatioSteps < 3) {
-                    $useRatio = $ratios['large'];
-                } elseif ($width >= 1536) {
-                    $useRatio = $ratios['large'];
-                }
-            }
-
             $height = $useRatio ? (int) round($width * $useRatio) : null;
 
             $srcsets[] = [
@@ -241,14 +214,14 @@ class Picture extends Tags
         }
 
         // Build img element
-        $html .= $this->buildImgTag($asset, $srcsets);
+        $html .= $this->buildImgTag($asset);
 
         $html .= "</picture>\n<!-- End: picture tag -->";
 
         return $html;
     }
 
-    protected function buildImgTag(Asset $asset, array $srcsets): string
+    protected function buildImgTag(Asset $asset): string
     {
         $originalRatio = $asset->height() && $asset->width()
             ? $asset->height() / $asset->width()
@@ -353,8 +326,8 @@ class Picture extends Tags
             }
 
             $aspectRatio = $source['aspect_ratio'] ?? $this->params->get('aspect_ratio');
-            $ratios = $this->parseAspectRatio(is_string($aspectRatio) ? $aspectRatio : null);
-            $srcsets = $this->buildSrcsets($sourceAsset, $ratios);
+            $ratio = $this->parseAspectRatio(is_string($aspectRatio) ? $aspectRatio : null);
+            $srcsets = $this->buildSrcsets($sourceAsset, $ratio);
 
             foreach ($formats as $format => $mimeType) {
                 $srcsetParts = [];
@@ -399,7 +372,7 @@ class Picture extends Tags
             $mimeType
         );
 
-        StackReplacementManager::pushStack('preload', $link);
+        StackReplacementManager::pushStack('head', $link);
     }
 
     protected function getFormats(): array
