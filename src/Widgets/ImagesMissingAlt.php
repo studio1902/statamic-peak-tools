@@ -33,7 +33,7 @@ class ImagesMissingAlt extends Widget
 
         $assets = $assets->sortByDesc('last_modified')->values();
 
-        return view('statamic-peak-tools::widgets.images-missing-alt', [
+        return view('statamic-peak-tools::cp.widgets.images-missing-alt', [
             'assets' => $assets->slice(0, $this->config('limit', 5)),
             'amount' => $assets->count(),
             'containers' => $containers->map(fn (string $container) => AssetContainer::findByHandle($container)->title()),

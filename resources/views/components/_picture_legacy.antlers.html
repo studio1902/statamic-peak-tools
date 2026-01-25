@@ -1,0 +1,136 @@
+{{#
+    @name Picture (Legacy)
+    @desc Legacy Antlers implementation of the picture component. Used when srcset_from is provided. The picture component. A responsive imageset in a picture element. See `resources/views/components/_figure.antlers.html` for an example on how to use this.
+    @param* image An image URL.
+    @param* sizes The sizes attribute. Something like `(min-width: 768px) 55vw, 90vw` for example.
+    @param aspect_ratio Pass in an aspect ratio to crop the image in a certain way. `16/9` for example or specify a second ratio for larger screens: `1/1 large:1/2`.
+    @param skip_ratio_steps Integer. Skip 1, 2 or 3 ratio steps to force small screens rendering big images to use mobile cropping instead of `large` cropping.
+    @param srcset_from The path to a partial with an alternative srcset definition array. Something like `snippets/srcset_full_width` for example.
+    @param class Add optional CSS classes.
+    @param cover Boolean. Whether the image should cover the parent. Uses the focus position.
+    @param bg String. Sets a background color for transparent images.
+    @param blur Integer. Adds a blur effect to the image. Use values between 0 and 100.
+    @param brightness String. Adjusts the image brightness. Use values between -100 and +100, where 0 represents no change.
+    @param contrast String. Adjusts the image contrast. Use values between -100 and +100, where 0 represents no change.
+    @param filter String. Applies a filter effect to the image. Accepts `greyscale` or `sepia`.
+    @param flip String. Flips the image. Accepts `v`, `h` and `both`.
+    @param gamma Float. Adjusts the image gamma. Use values between 0.1 and 9.99.
+    @param orient String. Rotates the image. Accepts `auto`, `0`, `90`, `180` or `270`.
+    @param sharpen Integer. Sharpen the image. Use values between 0 and 100.
+    @param pixelate Integer. Applies a pixelation effect to the image. Use values between 0 and 1000.
+    @param lazy Boolean. Whether the image should be natively lazy loaded.
+    @param quality int Set image quality. Defaults to 85.
+#}}
+
+<!-- statamic-peak-tools::components/_picture_legacy.antlers.html -->
+{{ if image }}
+    {{ asset :url="image" }}
+        {{# Configure aspect ratio's. #}}
+        {{ ratio = null }}
+        {{ ratio_large = null }}
+        {{ aspect_ratio | trim | explode(' ') }}
+            {{ if value | contains('large:') }}
+                {{ aspect = value | explode(':') | last }}
+                {{ ratio_large = (aspect | explode('/') | last) / (aspect | explode('/') | first) }}
+            {{ elseif value != '' }}
+                {{ ratio = (value | explode('/') | last) / (value | explode('/') | first) }}
+            {{ /if }}
+        {{ /aspect_ratio }}
+        {{ width && height ?= (original_ratio = height / width) }}
+
+        {{# Initialize srcset variable in current scope to be overwritable from partial below. #}}
+        {{ srcset = null }}
+
+        {{# Set srcset sizes. #}}
+        {{ partial src="{ srcset_from ?: 'statamic-peak-tools::snippets/srcset_default' }" }}
+
+        {{# Image formats. #}}
+        {{ formats = formats ?? {config:statamic-peak-tools:picture:default_formats} }}
+
+        <picture>
+            {{ if extension == 'svg' || extension == 'gif' }}
+                <img
+                    {{ if cover }}
+                        class="object-cover w-full h-full {{ class }}"
+                        style="object-position: {{ focus | background_position }}"
+                    {{ else }}
+                        class="{{ class }}"
+                    {{ /if }}
+                    src="{{ url }}"
+                    alt="{{ alt ?= alt | ensure_right('.') | entities }}"
+                    width="{{ width }}"
+                    height="{{ height }}"
+                    {{ unless alt }}
+                        aria-hidden="true"
+                    {{ /unless }}
+                    {{ if lazy }}
+                        loading="lazy"
+                    {{ /if }}
+                />
+            {{ else }}
+                {{ foreach:formats as="format|mime_type" }}
+                    <source
+                        srcset="
+                            {{ srcset scope="size" }}
+                                {{
+                                    glide:image
+                                    :format="format"
+                                    :width="size:width"
+                                    height="{ size:width * size:ratio }"
+                                    fit="crop_focal"
+                                    quality="{ quality ?? '85' }"
+                                    :bg="bg"
+                                    :blur="blur"
+                                    :brightness="brightness"
+                                    :contrast="contrast"
+                                    :filter="filter"
+                                    :flip="flip"
+                                    :gamma="gamma"
+                                    :orient="orient"
+                                    :pixelate="pixelate"
+                                    :sharpen="sharpen"
+                                }} {{ size:width }}w{{ !last ?= ',' }}
+                            {{ /srcset }}
+                        "
+                        sizes="{{ sizes ?? '(min-width: 1280px) 640px, (min-width: 768px) 50vw, 90vw' }}"
+                        type="{{ mime_type }}"
+                    >
+                {{ /foreach:formats }}
+                <img
+                    width="{{ width }}"
+                    height="{{ height }}"
+                    src="{{ glide:image
+                        width="1024"
+                        height="{ 1024 * original_ratio }"
+                        fit="crop_focal"
+                        :bg="bg"
+                        :blur="blur"
+                        :brightness="brightness"
+                        :contrast="contrast"
+                        :filter="filter"
+                        :flip="flip"
+                        :gamma="gamma"
+                        :orient="orient"
+                        :pixelate="pixelate"
+                        :sharpen="sharpen"
+                        quality="{ quality ?? '85' }"
+                    }}"
+                    alt="{{ alt ?= alt | ensure_right('.') | entities }}"
+                    {{ if cover }}
+                        class="object-cover w-full h-full {{ class }}"
+                        style="object-position: {{ focus | background_position }}"
+                    {{ else }}
+                        class="{{ class }}"
+                    {{ /if }}
+                    {{ unless alt }}
+                        aria-hidden="true"
+                    {{ /unless }}
+                    {{ if lazy }}
+                        loading="lazy"
+                    {{ /if }}
+                >
+            {{ /if }}
+        </picture>
+    {{ /asset }}
+{{ /if }}
+<!-- End: statamic-peak-tools::components/_picture_legacy.antlers.html -->
