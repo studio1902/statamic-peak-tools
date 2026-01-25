@@ -1,5 +1,13 @@
 # Changelog
 
+## v8.0.0 (2026-01-25)
+
+### What's new
+- Statamic v6 support. eaa430c by @robdekort
+- Add a Picture tag as PHP alternative to Antlers partial. For better performance and the option for multiple sources and preloading. 1eb78171 by @porstendorfer
+- Enable AVIF by default. bdba3fbe by @robdekort
+- Update Missing Alt Widget styling for v6. 664524b1 by @robdekort
+
 ## v7.5.1 (2026-01-09)
 
 ### What's changed
