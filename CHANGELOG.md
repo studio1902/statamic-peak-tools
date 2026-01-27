@@ -1,5 +1,10 @@
 # Changelog
 
+## v8.1.0 (2026-01-27)
+
+### What's changed
+- Remove custom Live Preview Hot Reloading solution. An update script will remove this from your layout file. bec98bf9 by @robdekort
+
 ## v8.0.0 (2026-01-25)
 
 ### What's new
