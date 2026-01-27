@@ -32,6 +32,7 @@ class ServiceProvider extends AddonServiceProvider
         \Studio1902\PeakTools\Updates\UpdateImagesBlueprintWithExemptToggle::class,
         \Studio1902\PeakTools\Updates\UpdateHoneypotField::class,
         \Studio1902\PeakTools\Updates\AddTrackerEventsField::class,
+        \Studio1902\PeakTools\Updates\RemoveLayoutLivePreviewPartial::class,
     ];
 
     protected $vite = [
