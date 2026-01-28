@@ -1,5 +1,10 @@
 # Changelog
 
+## v8.2.0 (2026-01-28)
+
+### What's changed
+- A new `contain` parameter for the Picture tag. #31 by @porstendorfer
+
 ## v8.1.0 (2026-01-27)
 
 ### What's changed
