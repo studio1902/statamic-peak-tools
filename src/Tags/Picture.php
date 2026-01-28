@@ -236,17 +236,20 @@ class Picture extends Tags
         );
 
         $cover = $this->params->bool('cover', false);
+        $contain = $this->params->bool('contain', false);
         $class = (string) $this->params->get('class', '');
         $lazy = $this->params->bool('lazy', true);
         $alt = $asset->get('alt');
         $focus = $asset->get('focus');
 
-        $classAttr = $cover
-            ? 'object-cover w-full h-full'.($class ? ' '.e($class) : '')
-            : e($class);
+        $classAttr = match (true) {
+            $cover => 'object-cover w-full h-full'.($class ? ' '.e($class) : ''),
+            $contain => 'object-contain w-full h-full'.($class ? ' '.e($class) : ''),
+            default => e($class),
+        };
 
         $styleAttr = '';
-        if ($cover && is_string($focus)) {
+        if (($cover || $contain) && is_string($focus)) {
             $styleAttr = sprintf(' style="object-position: %s"', $this->focusToPosition($focus));
         }
 
@@ -270,17 +273,20 @@ class Picture extends Tags
     protected function buildSimpleImgTag(Asset $asset): string
     {
         $cover = $this->params->bool('cover', false);
+        $contain = $this->params->bool('contain', false);
         $class = (string) $this->params->get('class', '');
         $lazy = $this->params->bool('lazy', true);
         $alt = $asset->get('alt');
         $focus = $asset->get('focus');
 
-        $classAttr = $cover
-            ? 'object-cover w-full h-full'.($class ? ' '.e($class) : '')
-            : e($class);
+        $classAttr = match (true) {
+            $cover => 'object-cover w-full h-full'.($class ? ' '.e($class) : ''),
+            $contain => 'object-contain w-full h-full'.($class ? ' '.e($class) : ''),
+            default => e($class),
+        };
 
         $styleAttr = '';
-        if ($cover && is_string($focus)) {
+        if (($cover || $contain) && is_string($focus)) {
             $styleAttr = sprintf(' style="object-position: %s"', $this->focusToPosition($focus));
         }
 
