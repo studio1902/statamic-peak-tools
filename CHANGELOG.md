@@ -1,5 +1,10 @@
 # Changelog
 
+## v8.3.0 (2026-02-03)
+
+### What's changed
+- Disable `avif` by default again as it still breaks generating images on many server configurations. c5a9d81f by @robdekort
+
 ## v8.2.0 (2026-01-28)
 
 ### What's changed
