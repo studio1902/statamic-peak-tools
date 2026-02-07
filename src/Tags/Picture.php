@@ -243,14 +243,14 @@ class Picture extends Tags
         $focus = $asset->get('focus');
 
         $classAttr = match (true) {
-            $cover => 'object-cover w-full h-full'.($class ? ' '.e($class) : ''),
-            $contain => 'object-contain w-full h-full'.($class ? ' '.e($class) : ''),
+            $cover => 'object-cover w-full h-full object-(--focal-point)'.($class ? ' '.e($class) : ''),
+            $contain => 'object-contain w-full h-full object-(--focal-point)'.($class ? ' '.e($class) : ''),
             default => e($class),
         };
 
         $styleAttr = '';
         if (($cover || $contain) && is_string($focus)) {
-            $styleAttr = sprintf(' style="object-position: %s"', $this->focusToPosition($focus));
+            $styleAttr = sprintf(' style="--focal-point: %s"', $this->focusToPosition($focus));
         }
 
         $altAttr = is_string($alt) ? e($this->ensureEndsWithPeriod($alt)) : '';
@@ -280,14 +280,14 @@ class Picture extends Tags
         $focus = $asset->get('focus');
 
         $classAttr = match (true) {
-            $cover => 'object-cover w-full h-full'.($class ? ' '.e($class) : ''),
-            $contain => 'object-contain w-full h-full'.($class ? ' '.e($class) : ''),
+            $cover => 'object-cover w-full h-full object-(--focal-point)'.($class ? ' '.e($class) : ''),
+            $contain => 'object-contain w-full h-full object-(--focal-point)'.($class ? ' '.e($class) : ''),
             default => e($class),
         };
 
         $styleAttr = '';
         if (($cover || $contain) && is_string($focus)) {
-            $styleAttr = sprintf(' style="object-position: %s"', $this->focusToPosition($focus));
+            $styleAttr = sprintf(' style="--focal-point: %s"', $this->focusToPosition($focus));
         }
 
         $altAttr = is_string($alt) ? e($this->ensureEndsWithPeriod($alt)) : '';
