@@ -1,0 +1,38 @@
+title: 'Globals Browser Appearance: General - Universal'
+fields:
+    -
+      handle: disable_telephone_detection
+      field:
+        display: 'Disable telephone detection'
+        type: toggle
+        icon: toggle
+        width: 33
+        instructions: 'Disables phone number detection.'
+        listable: hidden
+    -
+      handle: disable_email_detection
+      field:
+        display: 'Disable e-mail detection'
+        type: toggle
+        icon: toggle
+        width: 33
+        instructions: 'Disables e-mail address detection.'
+        listable: hidden
+    -
+      handle: disable_address_detection
+      field:
+        display: 'Disable address detection'
+        type: toggle
+        icon: toggle
+        width: 33
+        instructions: 'Disables address detection.'
+        listable: hidden
+    -
+      handle: display_standalone
+      field:
+        display: 'Display standalone'
+        type: toggle
+        icon: toggle
+        width: 33
+        instructions: 'Run PWA''s in a standalone browser mode.'
+        listable: hidden

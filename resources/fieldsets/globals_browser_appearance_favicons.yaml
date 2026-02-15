@@ -1,0 +1,48 @@
+title: 'Globals Browser Appearance: Favicons'
+fields:
+    -
+      handle: use_favicons
+      field:
+        display: 'Use favicons'
+        type: toggle
+        icon: toggle
+        instructions: 'Enable if you want Peak to generate favicons. **Important**: you need to have the PHP Imagick module installed.'
+        instructions_position: below
+        listable: hidden
+    -
+      handle: svg
+      field: common.image
+      config:
+        container: favicons
+        restrict: true
+        localizable: true
+        display: 'Favicon SVG'
+        instructions: 'The full color SVG favicon for [modern browsers](https://caniuse.com/link-icon-svg).'
+        instructions_position: below
+        width: 50
+        validate:
+          - 'required_if:use_favicons,true'
+        if:
+          use_favicons: 'equals true'
+        show_set_alt: false
+    -
+      handle: background
+      field:
+        theme: nano
+        lock_opacity: true
+        default_color_mode: HEXA
+        color_modes:
+          - hex
+        display: Background
+        type: color
+        icon: color
+        localizable: true
+        default: '#ffffff'
+        listable: hidden
+        instructions: 'The PWA-icons will use the full color SVG with this color as a background.'
+        instructions_position: below
+        width: 50
+        validate:
+          - 'required_if:use_favicons,true'
+        if:
+          use_favicons: 'equals true'

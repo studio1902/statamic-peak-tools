@@ -4,16 +4,29 @@ namespace Studio1902\PeakTools;
 
 use Illuminate\Support\Facades\View;
 use Statamic\Statamic;
+use Statamic\Events\GlobalVariablesSaved;
 use Statamic\Facades\GlobalSet;
 use Statamic\Providers\AddonServiceProvider;
 use Studio1902\PeakTools\Widgets\ImagesMissingAlt;
+use Studio1902\PeakTools\Listeners\GenerateFavicons;
 use Studio1902\PeakTools\Listeners\UpdateImagesMissingAltCacheListener;
 use Studio1902\PeakTools\Tags\Picture;
+
 
 class ServiceProvider extends AddonServiceProvider
 {
     protected $tags = [
         Picture::class,
+    ];
+
+    protected $listen = [
+        GlobalVariablesSaved::class => [
+            GenerateFavicons::class,
+        ],
+    ];
+
+    protected $routes = [
+        'web' => __DIR__ . '/../routes/web.php',
     ];
 
     protected $subscribe = [
@@ -33,6 +46,7 @@ class ServiceProvider extends AddonServiceProvider
         \Studio1902\PeakTools\Updates\UpdateHoneypotField::class,
         \Studio1902\PeakTools\Updates\AddTrackerEventsField::class,
         \Studio1902\PeakTools\Updates\RemoveLayoutLivePreviewPartial::class,
+        \Studio1902\PeakTools\Updates\MergeBrowserAppearanceIntoTools::class,
     ];
 
     protected $vite = [
@@ -45,6 +59,7 @@ class ServiceProvider extends AddonServiceProvider
 
     public function bootAddon()
     {
+        $this->registerPublishableFieldsets();
         $this->registerPublishableViews();
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'statamic-peak-tools');
 
@@ -59,6 +74,13 @@ class ServiceProvider extends AddonServiceProvider
                 'use_google' => GlobalSet::findByHandle('seo')?->inDefaultSite()->get('tracker_type') === 'gtm' || GlobalSet::findByHandle('seo')?->inDefaultSite()->get('tracker_type') === 'gtag' || GlobalSet::findByHandle('seo')?->inDefaultSite()->get('tracker_type') === 'sgtm',
             ]);
         });
+    }
+
+    protected function registerPublishableFieldsets()
+    {
+        $this->publishes([
+            __DIR__ . '/../resources/fieldsets' => resource_path('fieldsets/vendor/statamic-peak-tools'),
+        ], 'statamic-peak-tools-fieldsets');
     }
 
     protected function registerPublishableViews()

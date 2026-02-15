@@ -1,0 +1,57 @@
+title: 'Globals Browser Appearance: General - Theme'
+fields:
+    -
+      handle: use_theme_color
+      field:
+        display: 'Use theme color'
+        type: toggle
+        icon: toggle
+        width: 50
+        instructions: 'Enable if you want to specify theme colors for various browsers.'
+        listable: hidden
+    -
+      handle: use_theme_color_dark_mode
+      field:
+        display: 'For dark mode'
+        type: toggle
+        icon: toggle
+        width: 50
+        instructions: 'Enable if you want to specify a specific theme color for dark mode.'
+        listable: hidden
+        if:
+          use_theme_color: 'equals true'
+    -
+      handle: theme_color
+      field:
+        theme: nano
+        lock_opacity: true
+        default_color_mode: HEXA
+        color_modes:
+          - hex
+        display: 'Theme color'
+        type: color
+        default: '#ffffff'
+        icon: color
+        listable: hidden
+        width: 50
+        instructions: 'Sets the theme color for Safari (iOS 15+ and MacOS 11.4+) and the Android Chrome browser.'
+        if:
+          use_theme_color: 'equals true'
+    -
+      handle: theme_color_dark_mode
+      field:
+        theme: nano
+        lock_opacity: true
+        default_color_mode: HEXA
+        color_modes:
+          - hex
+        display: 'Theme color dark mode'
+        type: color
+        default: '#000000'
+        icon: color
+        listable: hidden
+        width: 50
+        instructions: 'Sets the theme color for Safari (iOS 15+ and MacOS 11.4+) and the Android Chrome browser in dark mode.'
+        if:
+          use_theme_color: 'equals true'
+          use_theme_color_dark_mode: 'equals true'
