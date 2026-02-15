@@ -14,8 +14,7 @@ class MergeBrowserAppearanceIntoTools extends UpdateScript
 {
     public function shouldUpdate($newVersion, $oldVersion)
     {
-        // return $this->isUpdatingTo('9.0.0');
-        return true;
+        return $this->isUpdatingTo('9.0.0');
     }
 
     public function update()
