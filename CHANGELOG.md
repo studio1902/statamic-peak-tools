@@ -1,5 +1,10 @@
 # Changelog
 
+## v9.0.1 (2026-02-16)
+
+### What's improved
+- A new update script now automatically moves any published Browser Appearance fieldsets and views. 8b27ff1a by @robdekort
+
 ## v9.0.0 (2026-02-16)
 
 ### What's new
