@@ -1,5 +1,10 @@
 # Changelog
 
+## v9.0.0 (2026-02-16)
+
+### What's new
+- The Browser Appearance addon is now merged into this addon. An update script will take care of all required changes and uninstall Browser Apperance. #35 by @robdekort
+
 ## v8.3.0 (2026-02-03)
 
 ### What's changed
