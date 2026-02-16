@@ -13,7 +13,7 @@ Site::all()->each(function (\Statamic\Sites\Site $site) {
         ? $relativeSiteUrl . '/site.webmanifest'
         : Stringy::ensureRight($relativeSiteUrl, '/' . $site->handle()) . '/site.webmanifest';
 
-    Route::statamic(URL::tidy($manifestUrl), 'statamic-peak-browser-appearance::manifest/manifest', [
+    Route::statamic(URL::tidy($manifestUrl), 'statamic-peak-tools::manifest/manifest', [
         'layout' => null,
         'content_type' => 'application/json'
     ])->name('manifest.' . $site->handle());
