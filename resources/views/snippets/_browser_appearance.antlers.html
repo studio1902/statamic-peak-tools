@@ -1,0 +1,44 @@
+{{#
+    @name Browser appearance
+    @desc The browser appearance snippet for the `<head>` to include browser specific meta tags Peak generated favicons.
+#}}
+
+<!-- /snippets/_browser_appearance.antlers.html -->
+{{ if browser_appearance:disable_telephone_detection }}
+    <meta name="format-detection" content="telephone=no">
+{{ /if }}
+{{ if browser_appearance:disable_email_detection }}
+    <meta name="format-detection" content="email=no">
+{{ /if }}
+{{ if browser_appearance:disable_address_detection }}
+    <meta name="format-detection" content="address=no">
+{{ /if }}
+
+{{ if browser_appearance:use_theme_color }}
+    <meta name="theme-color" content="{{ browser_appearance:theme_color }}"{{ if browser_appearance:use_theme_color_dark_mode }} media="(prefers-color-scheme: light)"{{ /if }}>
+    {{ if browser_appearance:use_theme_color_dark_mode }}
+        <meta name="theme-color" content="{{ browser_appearance:theme_color_dark_mode }}" media="(prefers-color-scheme: dark)">
+    {{ /if }}
+{{ /if }}
+
+{{ if browser_appearance:use_favicons }}
+    {{# SVG of any size, main icon #}}
+    <link rel="icon" href="{{ browser_appearance:svg }}" type="image/svg+xml">
+    <link rel="icon" href="/favicons/{{ site:handle }}/favicon.ico" type="image/x-icon">
+
+    {{# Safari fallback icon #}}
+    {{ if browser_appearance:safari_icon }}
+        <link rel="icon" href="{{ glide:browser_appearance:safari_icon width='16' height='16' fit='crop_focal' }}" sizes="16x16">
+        <link rel="icon" href="{{ glide:browser_appearance:safari_icon width='32' height='32' fit='crop_focal' }}" sizes="32x32">
+    {{ else }}
+        <link rel="icon" href="/favicons/{{ site:handle }}/favicon-16x16.png" sizes="16x16">
+        <link rel="icon" href="/favicons/{{ site:handle }}/favicon-32x32.png" sizes="32x32">
+    {{ /if }}
+{{ /if }}
+
+{{# manifest.json for PWA's. #}}
+<link rel="manifest" href="{{ route:manifest.{site:handle} }}">
+
+{{# A yielded JS section essential when you use the theme toggle (dark mode) preset. #}}
+{{ yield:theme_toggle }}
+<!-- End: /snippets/_browser_appearance.antlers.html -->
