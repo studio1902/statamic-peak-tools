@@ -12,7 +12,6 @@ use Studio1902\PeakTools\Listeners\GenerateFavicons;
 use Studio1902\PeakTools\Listeners\UpdateImagesMissingAltCacheListener;
 use Studio1902\PeakTools\Tags\Picture;
 
-
 class ServiceProvider extends AddonServiceProvider
 {
     protected $tags = [
@@ -47,6 +46,7 @@ class ServiceProvider extends AddonServiceProvider
         \Studio1902\PeakTools\Updates\AddTrackerEventsField::class,
         \Studio1902\PeakTools\Updates\RemoveLayoutLivePreviewPartial::class,
         \Studio1902\PeakTools\Updates\MergeBrowserAppearanceIntoTools::class,
+        \Studio1902\PeakTools\Updates\MoveBrowserAppearancePublishedFiles::class,
     ];
 
     protected $vite = [
