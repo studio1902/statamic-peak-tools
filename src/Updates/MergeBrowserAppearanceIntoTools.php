@@ -9,6 +9,7 @@ use Statamic\UpdateScripts\UpdateScript;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 
+use function Laravel\Prompts\error;
 use function Laravel\Prompts\spin;
 
 class MergeBrowserAppearanceIntoTools extends UpdateScript
@@ -55,10 +56,10 @@ class MergeBrowserAppearanceIntoTools extends UpdateScript
 
         $this->run(
             command: 'composer remove studio1902/statamic-peak-browser-appearance',
-            processingMessage: 'Removing Peak Browser Appearance...',
-            successMessage: 'Peak Browser Appearance Removed.',
+            processingMessage: 'Removing package `studio1902/statamic-peak-browser-appearance`. This may take a while.',
+            successMessage: 'Package `studio1902/statamic-peak-browser-appearance` removed.',
+            timeout: 600
         );
-
     }
 
     protected function run(string $command, string $processingMessage = '', string $successMessage = '', ?string $errorMessage = null, bool $tty = false, bool $spinner = true, int $timeout = 120): bool
