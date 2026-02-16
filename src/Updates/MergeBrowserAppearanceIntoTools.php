@@ -3,6 +3,7 @@
 namespace Studio1902\PeakTools\Updates;
 
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Statamic\UpdateScripts\UpdateScript;
 use Symfony\Component\Process\Exception\ProcessFailedException;
@@ -31,6 +32,26 @@ class MergeBrowserAppearanceIntoTools extends UpdateScript
         } else {
             $this->console()->info('Update any blueprint import references you might have, from `statamic-peak-browser-appearance::` to `statamic-peak-tools::`.');
         }
+
+        $disk = Storage::build([
+            'driver' => 'local',
+            'root' => resource_path('/views'),
+        ]);
+
+        collect($disk->allFiles())
+            ->filter(function($file) use ($disk) {
+                return Str::contains($disk->get($file), 'partial:statamic-peak-browser-appearance::');
+            })
+            ->each(function ($file) use ($disk) {
+                $contents = Str::of($disk->get($file))
+                    ->replace("partial:statamic-peak-browser-appearance::", "partial:statamic-peak-tools::" );
+
+                $disk->put($file, $contents);
+
+                $this->console()->info("Replaced `partial:statamic-peak-browser-appearance::` with `partial:statamic-peak-tools::` in `$file`.");
+            }
+        );
+
 
         $this->run(
             command: 'composer remove studio1902/statamic-peak-browser-appearance',
