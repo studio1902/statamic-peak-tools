@@ -1,0 +1,46 @@
+title: 'Globals Browser Appearance: Favicons - Overrides'
+fields:
+    -
+      handle: safari_icon
+      field: common.image
+      config:
+        container: favicons
+        restrict: true
+        localizable: true
+        display: 'Safari icon'
+        instructions: 'A 32x32 PNG image used for Safari. Will be focal cropped to this dimension and 16x16.'
+        instructions_position: below
+        width: 33
+        if:
+          use_favicons: 'equals true'
+        validate:
+          - 'mimes:png'
+        show_set_alt: false
+    -
+      handle: override_180
+      field: common.image
+      config:
+        container: favicons
+        restrict: true
+        localizable: true
+        display: 'Override 180x180'
+        instructions: 'A 180x180 PNG image override icon for PWA''s. Will be focal cropped to this dimension.'
+        instructions_position: below
+        width: 33
+        if:
+          use_favicons: 'equals true'
+        show_set_alt: false
+    -
+      handle: override_512
+      field: common.image
+      config:
+        container: favicons
+        restrict: true
+        localizable: true
+        display: 'Android Chrome icon'
+        instructions: 'A 512x512 PNG image override icon for PWA''s. Will be focal cropped to this dimension.'
+        instructions_position: below
+        width: 33
+        if:
+          use_favicons: 'equals true'
+        show_set_alt: false

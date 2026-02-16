@@ -1,0 +1,23 @@
+{{#
+    @name Manifest
+    @desc The manifest.json template that renders the favicon manifest.
+#}}
+
+{
+    "name": "{{ seo:site_name ?? config:app:name }}",
+    "display": "{{ browser_appearance:display_standalone ? 'standalone' : 'fullscreen' }}"{{ if browser_appearance:use_theme_color }},
+    "theme_color": "{{ browser_appearance:theme_color }}"{{ /if }}{{ if browser_appearance:use_favicons }},
+    "icons": [
+        {
+            "src": "{{ browser_appearance:override_512 ? { glide:browser_appearance:override_512 width='512' height='512' fit='crop_focal' } : '/favicons/{site:handle}/icon-512.png' }}",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "{{ browser_appearance:override_180 ? { glide:browser_appearance:override_180 width='180' height='180' fit='crop_focal' } : '/favicons/{site:handle}/icon-180.png' }}",
+            "sizes": "180x180",
+            "type": "image/png"
+        }
+    ]
+    {{ /if }}
+}
