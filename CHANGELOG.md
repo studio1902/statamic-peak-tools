@@ -1,5 +1,10 @@
 # Changelog
 
+## v9.0.2 (2026-03-05)
+
+### What's fixed
+- Grab container handle without any augmentation to prevent failing jobs when generating social images. #36 by @jelleroorda
+
 ## v9.0.1 (2026-02-16)
 
 ### What's improved
