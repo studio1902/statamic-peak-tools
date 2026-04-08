@@ -30,7 +30,12 @@ class Service
                     ->orderBy('last_modified', 'desc')
                     ->limit(100)
                     ->get()
-                    ->toAugmentedArray();
+                    ->map(fn ($asset) => [
+                        'edit_url' => $asset->editUrl(),
+                        'basename' => $asset->basename(),
+                        'last_modified' => $asset->lastModified()->timestamp,
+                    ])
+                    ->all();
             },
         );
     }
