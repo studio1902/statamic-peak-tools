@@ -1,5 +1,10 @@
 # Changelog
 
+## v9.0.3 (2026-04-08)
+
+### What's fixed
+- Cache the scalar values of an asset. #38 by @wgriffioen
+
 ## v9.0.2 (2026-03-05)
 
 ### What's fixed
