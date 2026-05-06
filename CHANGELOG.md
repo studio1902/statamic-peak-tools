@@ -1,5 +1,10 @@
 # Changelog
 
+## v9.1.0 (2026-05-06)
+
+### What's new
+- Add fetchpriority attribute to the picture tag. #39 by @andjsch
+
 ## v9.0.3 (2026-04-08)
 
 ### What's fixed
