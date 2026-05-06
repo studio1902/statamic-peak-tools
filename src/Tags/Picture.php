@@ -239,6 +239,7 @@ class Picture extends Tags
         $contain = $this->params->bool('contain', false);
         $class = (string) $this->params->get('class', '');
         $lazy = $this->params->bool('lazy', true);
+        $fetchpriority = $this->params->get('fetchpriority', false);
         $alt = $asset->get('alt');
         $focus = $asset->get('focus');
 
@@ -256,9 +257,10 @@ class Picture extends Tags
         $altAttr = is_string($alt) ? e($this->ensureEndsWithPeriod($alt)) : '';
         $ariaHidden = $alt ? '' : ' aria-hidden="true"';
         $loading = $lazy ? ' loading="lazy"' : '';
+        $fetchpriorityAttr = $fetchpriority ? ' fetchpriority="'.$fetchpriority.'"' : '';
 
         return sprintf(
-            "    <img\n        width=\"%d\"\n        height=\"%d\"\n        src=\"%s\"\n        alt=\"%s\"\n        class=\"%s\"%s%s%s\n    >\n",
+            "    <img\n        width=\"%d\"\n        height=\"%d\"\n        src=\"%s\"\n        alt=\"%s\"\n        class=\"%s\"%s%s%s%s\n    >\n",
             $asset->width(),
             $asset->height(),
             $fallbackUrl,
@@ -266,7 +268,8 @@ class Picture extends Tags
             $classAttr,
             $styleAttr,
             $ariaHidden,
-            $loading
+            $loading,
+            $fetchpriorityAttr
         );
     }
 
@@ -276,6 +279,7 @@ class Picture extends Tags
         $contain = $this->params->bool('contain', false);
         $class = (string) $this->params->get('class', '');
         $lazy = $this->params->bool('lazy', true);
+        $fetchpriority = $this->params->get('fetchpriority', false);
         $alt = $asset->get('alt');
         $focus = $asset->get('focus');
 
@@ -293,9 +297,10 @@ class Picture extends Tags
         $altAttr = is_string($alt) ? e($this->ensureEndsWithPeriod($alt)) : '';
         $ariaHidden = $alt ? '' : ' aria-hidden="true"';
         $loading = $lazy ? ' loading="lazy"' : '';
+        $fetchpriorityAttr = $fetchpriority ? ' fetchpriority="'.$fetchpriority.'"' : '';
 
         return sprintf(
-            "<!-- picture tag -->\n<picture>\n    <img\n        class=\"%s\"%s\n        src=\"%s\"\n        alt=\"%s\"\n        width=\"%d\"\n        height=\"%d\"%s%s\n    />\n</picture>\n<!-- End: picture tag -->",
+            "<!-- picture tag -->\n<picture>\n    <img\n        class=\"%s\"%s\n        src=\"%s\"\n        alt=\"%s\"\n        width=\"%d\"\n        height=\"%d\"%s%s%s\n    />\n</picture>\n<!-- End: picture tag -->",
             $classAttr,
             $styleAttr,
             $asset->url(),
@@ -303,7 +308,8 @@ class Picture extends Tags
             $asset->width(),
             $asset->height(),
             $ariaHidden,
-            $loading
+            $loading,
+            $fetchpriorityAttr
         );
     }
 
