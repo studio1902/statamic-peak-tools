@@ -14,13 +14,6 @@
     <meta name="format-detection" content="address=no">
 {{ /if }}
 
-{{ if browser_appearance:use_theme_color }}
-    <meta name="theme-color" content="{{ browser_appearance:theme_color }}"{{ if browser_appearance:use_theme_color_dark_mode }} media="(prefers-color-scheme: light)"{{ /if }}>
-    {{ if browser_appearance:use_theme_color_dark_mode }}
-        <meta name="theme-color" content="{{ browser_appearance:theme_color_dark_mode }}" media="(prefers-color-scheme: dark)">
-    {{ /if }}
-{{ /if }}
-
 {{ if browser_appearance:use_favicons }}
     {{# SVG of any size, main icon #}}
     <link rel="icon" href="{{ browser_appearance:svg }}" type="image/svg+xml">
