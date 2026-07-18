@@ -3,7 +3,7 @@
 ## v9.2.0 (2026-07-18)
 
 ### What's new
-- Removed global theming options as they are mostly deprecated.
+- Removed global theming options as they are mostly deprecated. 9ea75e70 by @robdekort
 
 ## v9.1.0 (2026-05-06)
 
