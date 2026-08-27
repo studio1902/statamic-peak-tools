@@ -17,7 +17,7 @@
 {{ if browser_appearance:use_favicons }}
     {{# SVG of any size, main icon #}}
     <link rel="icon" href="{{ browser_appearance:svg }}" type="image/svg+xml">
-    <link rel="icon" href="/favicons/{{ site:handle }}/favicon.ico" type="image/x-icon">
+    <link rel="alternate icon" sizes="16x16" href="/favicons/{{ site:handle }}/favicon.ico" type="image/x-icon">
 
     {{# Safari fallback icon #}}
     {{ if browser_appearance:safari_icon }}
