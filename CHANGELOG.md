@@ -1,5 +1,10 @@
 # Changelog
 
+## v9.2.1 (2026-08-27)
+
+### What's fixed
+- Add `sizes` attribute and rel `alternate` to `.ico` favicon to force Chromium to use the SVG instead. cb4da384 by @robdekort
+
 ## v9.2.0 (2026-07-18)
 
 ### What's new
