@@ -14,7 +14,13 @@ class RemoveGlobalThemeOptions extends UpdateScript
 
     public function update()
     {
-        $blueprint = GlobalSet::findByHandle('browser_appearance')->blueprint();
+        $globalSet = GlobalSet::findByHandle('browser_appearance');
+
+        if (! $globalSet) {
+            return;
+        }
+
+        $blueprint = $globalSet->blueprint();
         $contents = $blueprint->contents();
         $sections = $contents['tabs']['general']['sections'] ?? [];
 
