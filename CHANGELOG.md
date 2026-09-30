@@ -1,5 +1,10 @@
 # Changelog
 
+## v9.2.2 (2026-09-30)
+
+### What's fixed
+- Skip the theme options update when the browser appearance global is missing. #41 by @joshdaugherty
+
 ## v9.2.1 (2026-08-27)
 
 ### What's fixed
