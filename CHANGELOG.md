@@ -1,5 +1,10 @@
 # Changelog
 
+## v9.2.3 (2026-10-15)
+
+### What's fixed
+- Explicitly site hide toolbar icon color. c3a89485 by @robdekort
+
 ## v9.2.2 (2026-09-30)
 
 ### What's fixed
