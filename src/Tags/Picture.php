@@ -140,11 +140,14 @@ class Picture extends Tags
 
     protected function generateGlideUrl(Asset $asset, int $width, ?int $height, string $format): string
     {
+        // Glide names the JPEG format "jpg", and since Glide 4 it throws on "jpeg".
+        $format = strtolower($format);
+
         /** @var \Statamic\Imaging\GlideImageManipulator $manipulator */
         $manipulator = Image::manipulate($asset);
         $manipulator
             ->width($width)
-            ->format($format)
+            ->format($format === 'jpeg' ? 'jpg' : $format)
             ->quality($this->params->int('quality', 85));
 
         if ($height) {
