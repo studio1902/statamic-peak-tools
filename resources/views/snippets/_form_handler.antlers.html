@@ -28,7 +28,7 @@
                         }
                     )
 
-                    if (this.$refs.form.elements.namedItem('_redirect')) {
+                    if (this.$refs.form.querySelector('[name="_redirect"]')) {
                         this.form._redirect = this.$refs.form.elements.namedItem('_redirect').value;
                     }
                 },
