@@ -17,7 +17,7 @@
         }
     },
     "require": {
-        "statamic/cms": "^6.0"
+        "statamic/cms": "^6.44"
     },
     "minimum-stability": "dev",
     "config": {

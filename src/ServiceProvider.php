@@ -3,6 +3,7 @@
 namespace Studio1902\PeakTools;
 
 use Illuminate\Support\Facades\View;
+use Statamic\Facades\Form;
 use Statamic\Statamic;
 use Statamic\Events\GlobalVariablesSaved;
 use Statamic\Facades\GlobalSet;
@@ -75,19 +76,33 @@ class ServiceProvider extends AddonServiceProvider
                 'use_google' => GlobalSet::findByHandle('seo')?->inDefaultSite()->get('tracker_type') === 'gtm' || GlobalSet::findByHandle('seo')?->inDefaultSite()->get('tracker_type') === 'gtag' || GlobalSet::findByHandle('seo')?->inDefaultSite()->get('tracker_type') === 'sgtm',
             ]);
         });
+
+        $this->bootFormConfigFields();
     }
 
-    protected function registerPublishableFieldsets()
+    protected function registerPublishableFieldsets(): void
     {
         $this->publishes([
             __DIR__ . '/../resources/fieldsets' => resource_path('fieldsets/vendor/statamic-peak-tools'),
         ], 'statamic-peak-tools-fieldsets');
     }
 
-    protected function registerPublishableViews()
+    protected function registerPublishableViews(): void
     {
         $this->publishes([
             __DIR__ . '/../resources/views' => resource_path('views/vendor/statamic-peak-tools'),
         ], 'statamic-peak-tools-views');
+    }
+
+    protected function bootFormConfigFields(): void
+    {
+        Form::appendConfigFields('*', 'Fields', [
+            'success_message' => [
+                'type' => 'textarea',
+                'display' => __('Success message'),
+                'instructions' => __('The message that is shown after a successful submission.'),
+                'required' => true,
+            ]
+        ]);
     }
 }
