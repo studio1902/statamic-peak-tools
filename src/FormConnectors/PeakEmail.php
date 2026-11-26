@@ -2,13 +2,13 @@
 
 namespace Studio1902\PeakTools\FormConnectors;
 
-/**
- * This class overrides the default Email connector for forms and adds a 'Show submitted data' toggle.
- */
+use Override;
+
 class PeakEmail extends \Statamic\Forms\Connectors\Email
 {
     protected $developer = 'Studio 1902';
 
+    #[Override]
     public function blueprint(): \Statamic\Fields\Blueprint
     {
         $blueprint = parent::blueprint();
@@ -38,5 +38,14 @@ class PeakEmail extends \Statamic\Forms\Connectors\Email
             ->ensureField('mailer', $mailerField->config());
 
         return $blueprint;
+    }
+
+    #[Override]
+    protected function connectionRules(): array
+    {
+        return array_merge(parent::connectionRules(), [
+            'html' => 'nullable',
+            'text' => 'nullable',
+        ]);
     }
 }

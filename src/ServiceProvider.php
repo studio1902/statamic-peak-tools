@@ -64,7 +64,7 @@ class ServiceProvider extends AddonServiceProvider
         $this->registerPublishableFieldsets();
         $this->registerPublishableViews();
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'statamic-peak-tools');
-        $this->loadViewsFrom(__DIR__.'resources/views/email', 'peak-tools-email');
+        $this->loadViewsFrom(__DIR__.'/../resources/views/email', 'peak-tools-email');
 
         // Provide custom field conditions global tracker data to hide/show the event field in the button partial.
         View::composer('statamic::layout', function ($view) {
