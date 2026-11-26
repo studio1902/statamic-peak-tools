@@ -27,9 +27,13 @@
                             }
                         }
                     )
+
+                    if (this.$refs.form.querySelector('[name="_redirect"]')) {
+                        this.form._redirect = this.$refs.form.elements.namedItem('_redirect').value;
+                    }
                 },
                 successHook(response) {
-                    {{ success_hook }}
+                    {{ success_hook ?? slot }}
 
                     setTimeout(() => {
                         this.success = false
@@ -43,6 +47,11 @@
                     this.submitted = true
                     this.form.submit()
                         .then(response => {
+                            if (response.data.redirect) {
+                                window.location.href = response.data.redirect;
+                                return;
+                            }
+
                             this.form.reset()
                             this.form.setErrors([])
                             this.$refs.form.reset()
