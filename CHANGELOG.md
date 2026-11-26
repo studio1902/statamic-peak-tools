@@ -1,5 +1,12 @@
 # Changelog
 
+## v9.3.0 (2026-11-26)
+
+### What's new
+- Added support for redirects in forms by @andjsch in #45
+- Added a new email connector for Statamic's Forms 2. This connector uses email views from peak-tools by @andjsch
+- Peak tools now adds a `success_message` field to forms that will be used with new Peak installs by default by @andjsch
+
 ## v9.2.3 (2026-10-15)
 
 ### What's fixed
