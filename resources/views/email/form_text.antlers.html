@@ -1,0 +1,25 @@
+{{#
+    @name Abstract form text
+    @desc This is the text email template used for the form owner and sender.
+#}}
+
+{{ email_config:body | markdown | antlers | strip_tags }}
+
+{{ if email_config:show_submitted_data }}
+-
+{{ fields }}
+{{ if {config['visibility']} !== 'hidden' }}
+{{ trans :key="display" :locale="locale" }}:
+{{ if (value | is_array) }}
+{{ value }}
+{{ value:label ?? value }}
+{{ /value }}
+{{ else }}
+{{ value:label ?? value }}
+{{ /if }}
+{{ /if }}
+{{ /fields }}
+{{ /if }}
+-
+{{ now | timezone | format('r') }}
+{{ config:app:name }}

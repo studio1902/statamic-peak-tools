@@ -29,11 +29,11 @@ class PeakEmail extends \Statamic\Forms\Connectors\Email
             ])
             ->ensureField('html', [
                 'type' => 'hidden',
-                'default' => 'email/form',
+                'default' => 'peak-tools-email::form',
             ])
             ->ensureField('text', [
                 'type' => 'hidden',
-                'default' => 'email/form_text',
+                'default' => 'peak-tools-email::form_text',
             ])
             ->ensureField('mailer', $mailerField->config());
 
